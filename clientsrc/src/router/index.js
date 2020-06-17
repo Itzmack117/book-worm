@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home.vue'
+import Inventory from '../views/Inventory.vue'
 import Boards from '../views/Boards.vue'
 import Board from '../views/Board.vue'
 import { authGuard } from "@bcwdev/auth0-vue"
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'inventory',
+      component: Inventory
     },
     {
       path: '/boards',
