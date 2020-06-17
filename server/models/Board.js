@@ -25,5 +25,5 @@ Board.virtual("creator",
 //     .then(() => next())
 //     .catch(err => next(err))
 // })
-
+// This is to test the branch strategy
 export default Board
