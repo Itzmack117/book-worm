@@ -1,0 +1,25 @@
+import mongoose from "mongoose"
+let Schema = mongoose.Schema
+let ObjectId = Schema.Types.ObjectId
+
+const Order = new Schema({
+  date: {type: Date, required: true},
+  bookId: {type: ObjectId, required: true},
+  quantity: {type: Number, required: true},
+  creatorEmail: { type: String, required: true },
+ 
+}, { timestamps: true, toJSON: { virtuals: true } })
+
+//NOTE Total quantity vs quantity of book by specific title?
+
+Order.virtual("creator",
+  {
+    localField: "creatorEmail",
+    ref: "Profile",
+    foreignField: "email",
+    justOne: true
+  })
+
+
+
+export default Order

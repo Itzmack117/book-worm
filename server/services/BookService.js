@@ -2,9 +2,14 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 
-class BoardService {
-  async getAll(userEmail) {
-    return await dbContext.Boards.find({ creatorEmail: userEmail }).populate("creator", "name picture")
+class BookService {
+  async findAll(query = {}) {
+   let values = await dbContext.Books.find(query). populate(
+     "creator",
+     "name picture"
+     //NOTE Is this correct?
+   );
+   return values
   }
 
   async getById(id, userEmail) {
@@ -15,10 +20,7 @@ class BoardService {
     return data
   }
 
-  async create(rawData) {
-    let data = await dbContext.Boards.create(rawData)
-    return data
-  }
+
 
   async edit(id, userEmail, update) {
     let data = await dbContext.Boards.findOneAndUpdate({ _id: id, creatorEmail: userEmail }, update, { new: true })
@@ -28,12 +30,6 @@ class BoardService {
     return data;
   }
 
-  async delete(id, userEmail) {
-    let data = await dbContext.Boards.findOneAndRemove({ _id: id, creatorEmail: userEmail });
-    if (!data) {
-      throw new BadRequest("Invalid ID or you do not own this board");
-    }
-  }
 
 }
 
