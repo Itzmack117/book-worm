@@ -8,7 +8,6 @@
 
   <div class="row mt-3">
     <div class="col-12 shadow">
-
     
     <div class="row border-bottom border-dark bg-gradient-primary text-white">
       <div class="col-3 pt-2 text-left">
@@ -23,7 +22,7 @@
       <div class="col-2 pt-2 text-center">
         <h5>Cost ($)</h5>
       </div>
-    </div> <!--NOTE END OF TABLE HEADER -->
+    </div> 
 
       <div class="row border-bottom border-dark bg-info">
       <div class="col-3 pt-2 text-left border-right border-dark">
@@ -69,10 +68,8 @@
     </div>
      </div>
   </div>     
-    
+</div>
 
-
-  </div>
 </template>
 
 
