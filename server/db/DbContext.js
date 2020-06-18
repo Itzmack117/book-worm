@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
-import ValueSchema from "../models/Value";
+import OrderSchema from "../models/Order";
 import ProfileSchema from "../models/Profile";
-import BoardSchema from '../models/Board'
+import BookSchema from '../models/Book'
+import InvoiceSchema from '../models/Invoice'
 class DbContext {
-  Values = mongoose.model("Value", ValueSchema);
+  Orders = mongoose.model("Order", OrderSchema);
   Profile = mongoose.model("Profile", ProfileSchema);
-  Boards = mongoose.model("Board", BoardSchema)
+  Books = mongoose.model("Book", BookSchema)
+  Invoices = mongoose.model("Invoice", InvoiceSchema)
 }
 
 export const dbContext = new DbContext();
