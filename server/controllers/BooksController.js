@@ -34,7 +34,6 @@ export class BooksController extends BaseController {
         } catch (error) { next(error) }
     }
 
-
     async edit(req, res, next) {
         try {
             let data = await booksService.edit(req.params.id, req.userInfo.email, req.body)

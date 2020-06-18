@@ -11,7 +11,7 @@ const Order = new Schema({
 
 }, { timestamps: true, toJSON: { virtuals: true } })
 
-//NOTE Total quantity vs quantity of book by specific title?
+
 
 Order.virtual("creator",
   {

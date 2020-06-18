@@ -5,12 +5,7 @@ import { BadRequest } from "../utils/Errors"
 class BookService {
 
   async getAll(query = {}) {
-    let data = await dbContext.Books.find(query).populate(
-      "creator",
-      "name picture"
-      //NOTE Is this correct?
-      //FIXME Populate??
-    );
+    let data = await dbContext.Books.find(query)
     return data
   }
 

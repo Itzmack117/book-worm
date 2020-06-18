@@ -2,8 +2,9 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
 class OrdersService {
+
     async getAll(userEmail) {
-        return await dbContext.Orders.find({ creatorEmail: userEmail }).populate("creator")
+        return await dbContext.Orders.find({ creatorEmail: userEmail })
     }
 
     async getById(id, userEmail) {
