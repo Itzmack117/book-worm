@@ -71,49 +71,34 @@
         <div class="col-10 mx-auto mb-2">
           <h6>Results</h6>
 
-          <div class="row border-bottom border-primary" id="">
-            <div class="col-2 bg-success text-left">
-              <h6>ISBN</h6>
+          <div class="row bg-gradient-primary border-bottom border-primary" id="">
+            <div class="col-2 pt-2 text-left text-white">
+              <h5>ISBN</h5>
             </div>
-            <div class="col-4 bg-white text-left">
-              <h6>Title</h6>
+            <div class="col-4 pt-2 text-left text-white">
+              <h5>Title</h5>
             </div>
-            <div class="col-4 bg-success text-left">
-              <h6>Author</h6>
+            <div class="col-4 pt-2 text-left text-white">
+              <h5>Author</h5>
             </div>
-            <div class="col-2 bg-white text-left">
-              <h6>Price</h6>
+            <div class="col-1 pt-2 text-center text-white">
+              <h5>Price</h5>
             </div>
-          </div>
-          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 text-left">
-              <h6>ISBN</h6>
-            </div>
-            <div class="col-4 text-left">
-              <h6>Title</h6>
-            </div>
-            <div class="col-4 text-left">
-              <h6>Author</h6>
-            </div>
-            <div class="col-1 text-right">
-              <h6>Price</h6>
-            </div>
-            <div class="col-1 text-center">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-truck"></i></button>
-              
+            <div class="col-1 pt-2 text-white">
+              <h5>Order</h5>
             </div>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 text-left">
+            <div class="col-2 pt-2 text-left">
               <h6>ISBN</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Title</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Author</h6>
             </div>
-            <div class="col-1 text-right">
+            <div class="col-1 pt-2 text-right">
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
@@ -122,16 +107,16 @@
             </div>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 text-left">
+            <div class="col-2 pt-2 text-left">
               <h6>ISBN</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Title</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Author</h6>
             </div>
-            <div class="col-1 text-right">
+            <div class="col-1 pt-2 text-right">
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
@@ -140,16 +125,16 @@
             </div>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 text-left">
+            <div class="col-2 pt-2 text-left">
               <h6>ISBN</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Title</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Author</h6>
             </div>
-            <div class="col-1 text-right">
+            <div class="col-1 pt-2 text-right">
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
@@ -158,16 +143,16 @@
             </div>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 text-left">
+            <div class="col-2 pt-2 text-left">
               <h6>ISBN</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Title</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Author</h6>
             </div>
-            <div class="col-1 text-right">
+            <div class="col-1 pt-2 text-right">
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
@@ -176,16 +161,16 @@
             </div>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 text-left">
+            <div class="col-2 pt-2 text-left">
               <h6>ISBN</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Title</h6>
             </div>
-            <div class="col-4 text-left">
+            <div class="col-4 pt-2 text-left">
               <h6>Author</h6>
             </div>
-            <div class="col-1 text-right">
+            <div class="col-1 pt-2 text-right">
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
@@ -274,5 +259,6 @@ export default {
 #results{
   max-height: 20vh;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 </style>
