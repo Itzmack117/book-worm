@@ -56,10 +56,10 @@
               aria-describedby="helpId"
             />
           </div>
-          <button type="submit" class="mx-2 btn btn-outline-primary">
+          <button type="submit" class="mx-2 btn btn-outline-primary" @click="searchResults = true">
             <i class="fas fa-search"></i>
           </button>
-          <button @click="searchForm = false" type="button" class="btn btn-danger">
+          <button @click="searchForm = false; searchResults = false" type="button" class="btn btn-danger">
             <i class="fas fa-times"></i>
           </button>
         </form>
@@ -67,10 +67,9 @@
     </div>
 
     <div id="results">
-      <div v-if="searchForm" class="row bg-light">
+      <div v-if="searchResults" class="row bg-light">
         <div class="col-10 mx-auto mb-2">
-          <h6>Results</h6>
-
+          
           <div class="row bg-gradient-primary border-bottom border-primary" id="">
             <div class="col-2 pt-2 text-left text-white">
               <h5>ISBN</h5>
@@ -231,7 +230,8 @@ export default {
   name: "Navbar",
   data() {
     return {
-      searchForm: false
+      searchForm: false,
+      searchResults: false,
     };
   },
   methods: {
