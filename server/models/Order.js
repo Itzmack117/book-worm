@@ -3,11 +3,12 @@ let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
 
 const Order = new Schema({
-  date: {type: Date, required: true},
-  bookId: {type: ObjectId, required: true},
-  quantity: {type: Number, required: true},
+  date: { type: Date, required: true },
+  bookId: { type: ObjectId, required: true },
+  quantity: { type: Number, required: true },
+  orderId: { type: ObjectId },
   creatorEmail: { type: String, required: true },
- 
+
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 //NOTE Total quantity vs quantity of book by specific title?
