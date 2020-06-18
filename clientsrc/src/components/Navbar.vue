@@ -71,7 +71,7 @@
         <div class="col-10 mx-auto mb-2">
           <h6>Results</h6>
 
-          <div class="row" id="">
+          <div class="row border-bottom border-primary" id="">
             <div class="col-2 bg-success text-left">
               <h6>ISBN</h6>
             </div>
@@ -85,7 +85,7 @@
               <h6>Price</h6>
             </div>
           </div>
-          <div class="row py-1 bg-info" id="dummydata">
+          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
             <div class="col-2 text-left">
               <h6>ISBN</h6>
             </div>
@@ -103,7 +103,7 @@
               
             </div>
           </div>
-          <div class="row py-1 bg-info" id="dummydata">
+          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
             <div class="col-2 text-left">
               <h6>ISBN</h6>
             </div>
@@ -121,7 +121,7 @@
               
             </div>
           </div>
-          <div class="row py-1 bg-info" id="dummydata">
+          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
             <div class="col-2 text-left">
               <h6>ISBN</h6>
             </div>
@@ -139,7 +139,7 @@
               
             </div>
           </div>
-          <div class="row py-1 bg-info" id="dummydata">
+          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
             <div class="col-2 text-left">
               <h6>ISBN</h6>
             </div>
@@ -157,7 +157,7 @@
               
             </div>
           </div>
-          <div class="row py-1 bg-info" id="dummydata">
+          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
             <div class="col-2 text-left">
               <h6>ISBN</h6>
             </div>
@@ -175,7 +175,7 @@
               
             </div>
           </div>
-          <div class="row py-1 bg-info" id="dummydata">
+          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
             <div class="col-2 text-left">
               <h6>ISBN</h6>
             </div>
