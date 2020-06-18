@@ -1,0 +1,128 @@
+<template>
+  <div class="BookDetails container bg-white">
+    <div class="row">
+      <div class="col-9 mt-4 mb-2 text-left">
+        <span class="titleFont">THE GOOGLE STORY</span>
+        <span class="text-danger ml-3">low stock</span>
+      </div>
+      <div class="col-3 mt-4 mb-2">
+        <button class="btn btn-primary float-right">Order</button>
+      </div>
+    </div>
+    
+    <div class="row bg-light border-bottom border-primary">
+      <div class="col-3 pt-1 text-left">
+        <h5>ISBN</h5>
+      </div>
+      <div class="col-3 pt-1">
+        <h5>Quantity</h5>
+      </div>
+      <div class="col-3 pt-1">
+        <h5>Cost ($)</h5>
+      </div>
+      <div class="col-3 pt-1">
+        <h5>Value ($)</h5>
+      </div>
+    </div>
+    
+    <div class="row bg-info">
+      <div class="col-3 pt-3 border-right border-primary text-left">
+        <h5>0440335701</h5>
+      </div>
+      <div class="col-3 pt-3 border-right border-primary text-right">
+        <h5>42069</h5>
+      </div>
+      <div class="col-3 pt-3 border-right border-primary text-right">
+        <h5>13.37</h5>
+      </div>
+      <div class="col-3 pt-3 text-right">
+        <h5>542432.53</h5>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-5 text-left pl-0">
+        <img src="http://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE73utqwg-BFMcDxI3oWIQenLjNnD233073Wd4ifiiyfFjHieIz0sQpk16gxcp7Doc2pLPHYKJktgiDnM2dGw0rTO-rUQr8pYiYFJwONGTz9ofEnop2cTWLPWAR8T8K6O0Db4hk6A&source=gbs_api" alt="" srcset="" class="border border-primary mt-2">
+      </div>
+      <div class="col-7">
+        <div class="row mt-5 border-bottom border-dark">
+          <div class="col-3 text-left border-right border-dark">
+            <h5>Title</h5>
+          </div>
+          <div class="col-9 text-left">
+            <p>The Google Story</p>
+          </div>
+        </div>
+        <div class="row   border-bottom border-dark">
+          <div class="col-3 pt-2 text-left border-right border-dark">
+            <h5>Subtitle</h5>
+          </div>
+          <div class="col-9 pt-2 text-left">
+            <p>Inside the Hottest Business..</p>
+          </div>
+        </div>
+        <div class="row   border-bottom border-dark">
+          <div class="col-3 pt-2 text-left border-right border-dark">
+            <h5>Author(s)</h5>
+          </div>
+          <div class="col-9 pt-2 text-left">
+            <p>David Vise, Mark Malseed</p>
+          </div>
+        </div>
+        <div class="row   border-bottom border-dark">
+          <div class="col-3 pt-2 text-left border-right border-dark">
+            <h5>ISBN</h5>
+          </div>
+          <div class="col-9 pt-2 text-left">
+            <p>0440335701</p>
+          </div>
+        </div>
+        <div class="row   border-bottom border-dark">
+          <div class="col-3 pt-2 text-left border-right border-dark">
+            <h5>Page Count</h5>
+          </div>
+          <div class="col-9 pt-2 text-left">
+            <p>384</p>
+          </div>
+        </div>
+        <div class="row   border-bottom border-dark">
+          <div class="col-3 pt-2 text-left border-right border-dark">
+            <h5>Publisher</h5>
+          </div>
+          <div class="col-9  pt-2 text-left">
+            <p>Random House Publishing Group</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</template>
+<script>
+export default {
+  name: "bookDetails",
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {},
+  components: {}
+  
+}
+</script>
+<style scoped>
+*{
+  font-family: 'Ubuntu', sans-serif;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+.titleFont{
+  font-size: 1.5em;
+}
+</style>
