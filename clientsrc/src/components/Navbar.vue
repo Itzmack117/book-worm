@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
       <i class="pb-2 fas fa-book fa-2x text-white mr-3"></i>
-      <router-link class="navbar-brand text-white" :to="{ name: 'home' }">
+      <router-link class="navbar-brand text-white" :to="{ name: 'inventory' }">
         <span class="thefont">
           <h2>Bookworm</h2>
         </span>
@@ -25,10 +25,9 @@
           </li>
           <li
             class="thefont nav-item"
-            v-if="$auth.isAuthenticated"
-            :class="{ active: $route.name == 'boards' }"
+           :class="{ active: $route.name == 'bookDetails' }"
           >
-            <router-link class="thefont nav-link text-white" :to="{ name: 'order' }">Order Books</router-link>
+            <router-link class="thefont nav-link text-white" :to="{ name: 'bookDetails' }">Details Page</router-link>
           </li>
         </ul>
         <span class="navbar-text">
@@ -183,20 +182,13 @@
       </div>
     </div>
 
-  <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">How Many Would You Like To Order?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                  <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">x</span>
                   </button>
                 </div>
                 <div class="modal-body">
@@ -209,7 +201,6 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                  
                 </div>
               </div>
             </div>
