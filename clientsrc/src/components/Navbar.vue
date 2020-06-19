@@ -287,16 +287,18 @@ export default {
       await this.$auth.logout({ returnTo: window.location.origin });
     },
     async searchBooks() {
-      let res = await googleApi.post("", { query: this.searchApi });
-      this.results = res.data.books.map(r => {
-        console.log(res);
+      let res = await googleApi.get("" + this.searchApi);
+      console.log(res)
+      this.results = res.data.items.map(r => {
+        console.log(res.data.items);
         return {
           title: r.volumeInfo.title,
           subTitle: r.volumeInfo.subtitle,
           authors: r.volumeInfo.authors,
-          ISBN: r.volumeInfo.industryIdentifiers[1],
+          ISBN: r.volumeInfo.industryIdentifiers[1].identifier,
           pageCount: r.volumeInfo.pageCount,
-          publisher: r.volumeInfo.publisher
+          publisher: r.volumeInfo.publisher,
+          description: r.volumeInfo.description,
         };
       });
     }
