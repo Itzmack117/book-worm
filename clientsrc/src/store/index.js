@@ -17,16 +17,14 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     user: {},
-    boards: [],
-    activeBoard: {}
+    activeBoard: {},
+    searchResults: []
   },
   mutations: {
     setUser(state, user) {
       state.user = user
     },
-    setBoards(state, boards) {
-      state.boards = boards
-    }
+   
   },
   actions: {
     //#region -- AUTH STUFF --
@@ -44,29 +42,11 @@ export default new Vuex.Store({
         console.error(err)
       }
     },
-    //#endregion
 
-
-    //#region -- BOARDS --
-    getBoards({ commit, dispatch }) {
-      api.get('boards')
-        .then(res => {
-          commit('setBoards', res.data)
-        })
-    },
-    addBoard({ commit, dispatch }, boardData) {
-      api.post('boards', boardData)
-        .then(serverBoard => {
-          dispatch('getBoards')
-        })
+  
     }
     //#endregion
 
 
-    //#region -- LISTS --
-
-
-
-    //#endregion
-  }
+  
 })

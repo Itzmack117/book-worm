@@ -23,6 +23,9 @@
           <li class="thefont nav-item text-white" :class="{ active: $route.name == 'inventory' }">
             <router-link :to="{ name: 'inventory' }" class="text-white nav-link">Inventory</router-link>
           </li>
+          <li class="pl-3 thefont nav-item text-white" :class="{ active: $route.name == 'order' }">
+            <router-link :to="{ name: 'order' }" class="text-white nav-link"><h4>My Order</h4></router-link>
+          </li>
           <li class="thefont nav-item" :class="{ active: $route.name == 'bookDetails' }">
             <router-link
               class="thefont nav-link text-white"
@@ -90,8 +93,10 @@
               <h5>Order</h5>
             </div>
           </div>
-          <div v-for="result in results" :key="result.id"> 
-            {{ result.title }}
+          <div v-for="book in results" :key="book.id" :bookProp="book"> 
+            <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+            {{ book.title }} - {{book.ISBN}}
+            </router-link>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
             <div class="col-2 pt-2 text-left">
@@ -291,23 +296,24 @@ export default {
       await this.$auth.logout({ returnTo: window.location.origin });
     },
     async searchBooks() {
+      this.$store.state.searchResults = [];
       let res = await googleApi.get("" + this.searchApi);
-      console.log(res)
       this.results = res.data.items.map(r => {
-        console.log(res.data.items);
-        return {
+      return  {
           title: r.volumeInfo.title,
           subTitle: r.volumeInfo.subtitle,
           authors: r.volumeInfo.authors,
-          ISBN: r.volumeInfo.industryIdentifiers[1].identifier,
+          ISBN: r.volumeInfo.industryIdentifiers[0].identifier,
           pageCount: r.volumeInfo.pageCount,
           publisher: r.volumeInfo.publisher,
           description: r.volumeInfo.description,
-        };
-      });
-    }
+	      };
+          })
+            this.$store.state.searchResults.push(this.results)
+            console.log(res.data.items)
+        }
+      }
   }
-};
 </script>
 
 <style scoped>

@@ -2,8 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import BookDetails from '../views/BookDetails.vue'
 import Inventory from "../views/Inventory.vue"
-import Boards from '../views/Boards.vue'
-import Board from '../views/Board.vue'
+import Order from '../views/Order.vue'
 import { authGuard } from "@bcwdev/auth0-vue"
 
 Vue.use(Router)
@@ -21,16 +20,11 @@ export default new Router({
       component: BookDetails
     },
     {
-      path: '/boards',
-      name: 'boards',
-      component: Boards,
-      beforeEnter: authGuard
+      path: '/order',
+      name: 'order',
+      component: Order,
     },
-    {
-      path: '/boards/:boardId',
-      name: 'board',
-      component: Board
-    },
+
     {
       path: "*",
       redirect: '/'
