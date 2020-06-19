@@ -50,7 +50,7 @@
             <h5>Title</h5>
           </div>
           <div class="col-9 pt-2 text-left">
-            <p>The Google Story</p>
+            <p>The Story of Google</p>
           </div>
         </div>
         <div class="row   border-bottom border-dark">
@@ -132,10 +132,15 @@
 <script>
 export default {
   name: "bookDetails",
+  props: ["bookId"],
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    book(){ 
+      return this.$store.state.activeBook 
+      }
+  },
   methods: {},
   components: {}
   
