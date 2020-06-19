@@ -23,11 +23,11 @@
           <li class="thefont nav-item text-white" :class="{ active: $route.name == 'inventory' }">
             <router-link :to="{ name: 'inventory' }" class="text-white nav-link">Inventory</router-link>
           </li>
-          <li
-            class="thefont nav-item"
-           :class="{ active: $route.name == 'bookDetails' }"
-          >
-            <router-link class="thefont nav-link text-white" :to="{ name: 'bookDetails' }">Details Page</router-link>
+          <li class="thefont nav-item" :class="{ active: $route.name == 'bookDetails' }">
+            <router-link
+              class="thefont nav-link text-white"
+              :to="{ name: 'bookDetails' }"
+            >Details Page</router-link>
           </li>
         </ul>
         <span class="navbar-text">
@@ -41,11 +41,12 @@
       <!-- v-if="searchForm" -->
       <div class="col-10 d-flex flex-column align-items-center mx-auto text-left py-2">
         <small class="pl-3">Search Database For Books To Order</small>
-        <form class="form-inline d-flex">
+        <form class="form-inline d-flex" @submit.prevent="searchBooks">
           <div class="form-group align-items-center">
             <!-- TODO v-model -->
 
             <input
+              v-model="searchApi"
               style="width: 50vw"
               type="text"
               name="search"
@@ -58,7 +59,11 @@
           <button type="submit" class="mx-2 btn btn-outline-primary" @click="searchResults = true">
             <i class="fas fa-search"></i>
           </button>
-          <button @click="searchForm = false; searchResults = false" type="button" class="btn btn-danger">
+          <button
+            @click="searchForm = false; searchResults = false"
+            type="button"
+            class="btn btn-danger"
+          >
             <i class="fas fa-times"></i>
           </button>
         </form>
@@ -68,8 +73,7 @@
     <div id="results">
       <div v-if="searchResults" class="row bg-light">
         <div class="col-10 mx-auto mb-2">
-          
-          <div class="row bg-gradient-primary border-bottom border-primary" id="">
+          <div class="row bg-gradient-primary border-bottom border-primary" id>
             <div class="col-2 pt-2 text-left text-white">
               <h5>ISBN</h5>
             </div>
@@ -100,8 +104,14 @@
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-truck"></i></button>
-              
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                <i class="fas fa-truck"></i>
+              </button>
             </div>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
@@ -118,8 +128,14 @@
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-truck"></i></button>
-              
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                <i class="fas fa-truck"></i>
+              </button>
             </div>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
@@ -136,8 +152,14 @@
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-truck"></i></button>
-              
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                <i class="fas fa-truck"></i>
+              </button>
             </div>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
@@ -154,8 +176,14 @@
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-truck"></i></button>
-              
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                <i class="fas fa-truck"></i>
+              </button>
             </div>
           </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
@@ -172,45 +200,66 @@
               <h6>Price</h6>
             </div>
             <div class="col-1 text-center">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-truck"></i></button>
-              
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                <i class="fas fa-truck"></i>
+              </button>
             </div>
           </div>
-
-          
         </div>
       </div>
     </div>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">How Many Would You Like To Order?</h5>
-                  <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">x</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form class="form-inline" style="width: 100%">
-                    <div class="form-group" style="width: 100%">
-                      <input type="number" style="width: 75%" name="" id="" class=" mb-2 form-control" placeholder="quantity" aria-describedby="helpId">
-                      <button type="submit" class="mb-2 ml-5 btn btn-light">Order</button>                      
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">How Many Would You Like To Order?</h5>
+            <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
           </div>
-
-
+          <div class="modal-body">
+            <form class="form-inline" style="width: 100%">
+              <div class="form-group" style="width: 100%">
+                <input
+                  type="number"
+                  style="width: 75%"
+                  name
+                  id
+                  class="mb-2 form-control"
+                  placeholder="quantity"
+                  aria-describedby="helpId"
+                />
+                <button type="submit" class="mb-2 ml-5 btn btn-light">Order</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+const googleApi = axios.create({
+  baseURL: "https://www.googleapis.com/books/v1/volumes?q=",
+  timeout: 3000
+});
 import axios from "axios";
 
 let _api = axios.create({
@@ -223,6 +272,7 @@ export default {
     return {
       searchForm: false,
       searchResults: false,
+      searchApi: ""
     };
   },
   methods: {
@@ -235,6 +285,20 @@ export default {
     },
     async logout() {
       await this.$auth.logout({ returnTo: window.location.origin });
+    },
+    async searchBooks() {
+      let res = await googleApi.post("", { query: this.searchApi });
+      this.results = res.data.books.map(r => {
+        console.log(res);
+        return {
+          title: r.volumeInfo.title,
+          subTitle: r.volumeInfo.subtitle,
+          authors: r.volumeInfo.authors,
+          ISBN: r.volumeInfo.industryIdentifiers[1],
+          pageCount: r.volumeInfo.pageCount,
+          publisher: r.volumeInfo.publisher
+        };
+      });
     }
   }
 };
@@ -245,9 +309,7 @@ export default {
   font-family: "Indie Flower", cursive;
 }
 
-
-
-#results{
+#results {
   max-height: 20vh;
   overflow-y: scroll;
   overflow-x: hidden;
