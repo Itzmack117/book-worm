@@ -90,6 +90,9 @@
               <h5>Order</h5>
             </div>
           </div>
+          <div v-for="result in results" :key="result.id"> 
+            {{ result.title }}
+          </div>
           <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
             <div class="col-2 pt-2 text-left">
               <h6>ISBN</h6>
@@ -272,7 +275,8 @@ export default {
     return {
       searchForm: false,
       searchResults: false,
-      searchApi: ""
+      searchApi: "",
+      results: []
     };
   },
   methods: {
