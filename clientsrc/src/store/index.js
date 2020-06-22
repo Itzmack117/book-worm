@@ -14,6 +14,11 @@ let api = Axios.create({
   withCredentials: true
 })
 
+const googleApi = axios.create({
+  baseURL: "https://www.googleapis.com/books/v1/volumes?q=",
+  timeout: 3000
+});
+
 export default new Vuex.Store({
   state: {
     user: {},
@@ -42,9 +47,22 @@ export default new Vuex.Store({
         console.error(err)
       }
     },
-
-  
+    async searchApi({commit, dispatch}){
+     let res = await googleApi.get("" + this.searchApi);   
+     dispatch("deleteFromServer", res.data.items)  
+    },
+    async deleteFromServer({commit, dispatch}, books){
+      let res = await _api.delete("")
+      dispatch("postToServer", books)
+    },
+    async postToServer({commit, dispatch}, books){
+      let res = await _api.post("/results", books)
+      dispatch("getFromServer")
+    },
+    async getFromServer({commit, dispatch}){
+      let res = await _api.get("/results")
     }
+  }
     //#endregion
 
 

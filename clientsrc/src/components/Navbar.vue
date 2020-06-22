@@ -24,7 +24,9 @@
             <router-link :to="{ name: 'inventory' }" class="text-white nav-link">Inventory</router-link>
           </li>
           <li class="pl-3 thefont nav-item text-white" :class="{ active: $route.name == 'order' }">
-            <router-link :to="{ name: 'order' }" class="text-white nav-link"><h4>My Order</h4></router-link>
+            <router-link :to="{ name: 'order' }" class="text-white nav-link">
+              <h4>My Order</h4>
+            </router-link>
           </li>
           <li class="thefont nav-item" :class="{ active: $route.name == 'bookDetails' }">
             <router-link
@@ -93,131 +95,37 @@
               <h5>Order</h5>
             </div>
           </div>
-          <div v-for="book in results" :key="book.id" :bookProp="book"> 
-            <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-            {{ book.title }} - {{book.ISBN}}
-            </router-link>
-          </div>
-          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 pt-2 text-left">
-              <h6>ISBN</h6>
+          
+            <!-- <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+            {{ book.title }}
+            </router-link>-->
+            <div v-for="book in results" :key="book.id" :bookProp="book">
+              <router-link :to="{name: 'book', params: {bookId: book.id}}"">
+              <div class="apiResults row border-bottom border-primary py-1 bg-info" >
+       
+                <div class="col-2 pt-2 text-left">
+                  <h6>{{book.ISBN}}</h6>
+                </div>
+                <div class="col-4 pt-2 text-left">
+                  <h6>{{book.title}}</h6>
+                </div>
+                <div class="col-4 pt-2 text-left">
+                  <h6>{{book.author}}</h6>
+                </div>
+                <div class="col-1 pt-2 text-right">
+                  <h6>{{book.price}}</h6>
+                </div>
+                <div class="col-1 text-center">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fas fa-truck"></i>
+                  </button>
+                </div>
+        </div>
+        </router-link>
             </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Title</h6>
-            </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Author</h6>
-            </div>
-            <div class="col-1 pt-2 text-right">
-              <h6>Price</h6>
-            </div>
-            <div class="col-1 text-center">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                <i class="fas fa-truck"></i>
-              </button>
-            </div>
-          </div>
-          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 pt-2 text-left">
-              <h6>ISBN</h6>
-            </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Title</h6>
-            </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Author</h6>
-            </div>
-            <div class="col-1 pt-2 text-right">
-              <h6>Price</h6>
-            </div>
-            <div class="col-1 text-center">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                <i class="fas fa-truck"></i>
-              </button>
-            </div>
-          </div>
-          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 pt-2 text-left">
-              <h6>ISBN</h6>
-            </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Title</h6>
-            </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Author</h6>
-            </div>
-            <div class="col-1 pt-2 text-right">
-              <h6>Price</h6>
-            </div>
-            <div class="col-1 text-center">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                <i class="fas fa-truck"></i>
-              </button>
-            </div>
-          </div>
-          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 pt-2 text-left">
-              <h6>ISBN</h6>
-            </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Title</h6>
-            </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Author</h6>
-            </div>
-            <div class="col-1 pt-2 text-right">
-              <h6>Price</h6>
-            </div>
-            <div class="col-1 text-center">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                <i class="fas fa-truck"></i>
-              </button>
-            </div>
-          </div>
-          <div class="row border-bottom border-primary py-1 bg-info" id="dummydata">
-            <div class="col-2 pt-2 text-left">
-              <h6>ISBN</h6>
-            </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Title</h6>
-            </div>
-            <div class="col-4 pt-2 text-left">
-              <h6>Author</h6>
-            </div>
-            <div class="col-1 pt-2 text-right">
-              <h6>Price</h6>
-            </div>
-            <div class="col-1 text-center">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                <i class="fas fa-truck"></i>
-              </button>
-            </div>
-          </div>
+
+            <!-- <apiResults /> -->
+          
         </div>
       </div>
     </div>
@@ -264,6 +172,7 @@
 </template>
 
 <script>
+import apiResults from "../components/apiResults";
 const googleApi = axios.create({
   baseURL: "https://www.googleapis.com/books/v1/volumes?q=",
   timeout: 3000
@@ -276,6 +185,9 @@ let _api = axios.create({
 });
 export default {
   name: "Navbar",
+  components: {
+    apiResults
+  },
   data() {
     return {
       searchForm: false,
@@ -297,23 +209,25 @@ export default {
     },
     async searchBooks() {
       this.$store.state.searchResults = [];
-      let res = await googleApi.get("" + this.searchApi);
-      this.results = res.data.items.map(r => {
-      return  {
-          title: r.volumeInfo.title,
-          subTitle: r.volumeInfo.subtitle,
-          authors: r.volumeInfo.authors,
-          ISBN: r.volumeInfo.industryIdentifiers[0].identifier,
-          pageCount: r.volumeInfo.pageCount,
-          publisher: r.volumeInfo.publisher,
-          description: r.volumeInfo.description,
-	      };
-          })
-            this.$store.state.searchResults.push(this.results)
-            console.log(res.data.items)
-        }
-      }
+      let res = await googleApi.get("" + this.searchApi);   
+      deleteFromServer(res.data.items)
+      this.$store.dispatch("searchApi");
+      
+    },
+    async deleteFromServer(books){
+      let res = await _api.delete("")
+      postToServer(books)
+    },
+    async postToServer(books){
+      let res2 = await _api.post("", books)
+      getFromServer()
+    },
+    async getFromServer(){
+      let res = await _api.get("");
+      
+    }
   }
+};
 </script>
 
 <style scoped>
