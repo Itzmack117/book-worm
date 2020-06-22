@@ -8,13 +8,13 @@ Vue.use(Vuex)
 //Allows axios to work locally or live
 let base = window.location.host.includes('localhost') ? '//localhost:3000/' : '/'
 
-let api = Axios.create({
+let _api = Axios.create({
   baseURL: base + "api/",
   timeout: 3000,
   withCredentials: true
 })
 
-const googleApi = axios.create({
+const googleApi = Axios.create({
   baseURL: "https://www.googleapis.com/books/v1/volumes?q=",
   timeout: 3000
 });
@@ -22,35 +22,35 @@ const googleApi = axios.create({
 export default new Vuex.Store({
   state: {
     user: {},
-    activeBoard: {},
-    searchResults: []
+    searchResults: [],
+    activeBook: {}
   },
   mutations: {
     setUser(state, user) {
       state.user = user
     },
-   
+    setActiveBook(state, id) {
+     let found = state.searchResults.find(b => b.id == id)
+     state.activeBook = found
+    }
   },
   actions: {
     //#region -- AUTH STUFF --
     setBearer({ }, bearer) {
-      api.defaults.headers.authorization = bearer;
+      _api.defaults.headers.authorization = bearer;
     },
     resetBearer() {
-      api.defaults.headers.authorization = "";
+      _api.defaults.headers.authorization = "";
     },
     async getProfile({ commit }) {
       try {
-        let res = await api.get("/profile")
+        let res = await _api.get("/profile")
         commit("setUser", res.data)
       } catch (err) {
         console.error(err)
       }
     },
-    async searchApi({commit, dispatch}){
-     let res = await googleApi.get("" + this.searchApi);   
-     dispatch("deleteFromServer", res.data.items)  
-    },
+
     async deleteFromServer({commit, dispatch}, books){
       let res = await _api.delete("")
       dispatch("postToServer", books)
@@ -61,6 +61,10 @@ export default new Vuex.Store({
     },
     async getFromServer({commit, dispatch}){
       let res = await _api.get("/results")
+    },
+
+    async getActiveBook({commit, dispatch}, id){
+      commit("setActiveBook", id)
     }
   }
     //#endregion

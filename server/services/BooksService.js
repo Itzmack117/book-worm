@@ -17,6 +17,9 @@ class BookService {
     return data
   }
 
+    async createSearch(books){
+      let data = await dbContext.Results.create()
+    }
 
   async edit(id, userEmail, update) {
     let data = await dbContext.Books.findOneAndUpdate({ _id: id, creatorEmail: userEmail }, update, { new: true })

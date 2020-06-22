@@ -82,16 +82,13 @@
             <div class="col-2 pt-2 text-left text-white">
               <h5>ISBN</h5>
             </div>
-            <div class="col-4 pt-2 text-left text-white">
+            <div class="col-5 pt-2 text-left text-white">
               <h5>Title</h5>
             </div>
-            <div class="col-4 pt-2 text-left text-white">
+            <div class="col-3 pt-2 text-left text-white">
               <h5>Author</h5>
             </div>
-            <div class="col-1 pt-2 text-center text-white">
-              <h5>Price</h5>
-            </div>
-            <div class="col-1 pt-2 text-white">
+            <div class="col-2 pt-2 text-white text-center">
               <h5>Order</h5>
             </div>
           </div>
@@ -100,22 +97,19 @@
             {{ book.title }}
             </router-link>-->
             <div v-for="book in results" :key="book.id" :bookProp="book">
-              <router-link :to="{name: 'book', params: {bookId: book.id}}"">
+              <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
               <div class="apiResults row border-bottom border-primary py-1 bg-info" >
        
                 <div class="col-2 pt-2 text-left">
                   <h6>{{book.ISBN}}</h6>
                 </div>
-                <div class="col-4 pt-2 text-left">
+                <div class="col-5 pt-2 text-left">
                   <h6>{{book.title}}</h6>
                 </div>
-                <div class="col-4 pt-2 text-left">
-                  <h6>{{book.author}}</h6>
+                <div class="col-3 pt-2 text-left">
+                  <h6>{{book.authors.toString()}}</h6>
                 </div>
-                <div class="col-1 pt-2 text-right">
-                  <h6>{{book.price}}</h6>
-                </div>
-                <div class="col-1 text-center">
+                <div class="col-2 text-center">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     <i class="fas fa-truck"></i>
                   </button>
@@ -210,22 +204,24 @@ export default {
     async searchBooks() {
       this.$store.state.searchResults = [];
       let res = await googleApi.get("" + this.searchApi);   
-      deleteFromServer(res.data.items)
-      this.$store.dispatch("searchApi");
-      
+      this.results = res.data.items.map(r => {
+        if (r.volumeInfo.industryIdentifiers[0].identifier){
+        return {
+          id: r.id,
+          title: r.volumeInfo.title,
+          subTitle: r.volumeInfo.subtitle,
+          authors: r.volumeInfo.authors,
+          ISBN: r.volumeInfo.industryIdentifiers[0].identifier,
+          pageCount: r.volumeInfo.pageCount,
+          publisher: r.volumeInfo.publisher,
+          description: r.volumeInfo.description,
+          price: r.saleInfo.listPrice
+        };
+        }
+      });
+      this.$store.state.searchResults.push(this.results)
     },
-    async deleteFromServer(books){
-      let res = await _api.delete("")
-      postToServer(books)
-    },
-    async postToServer(books){
-      let res2 = await _api.post("", books)
-      getFromServer()
-    },
-    async getFromServer(){
-      let res = await _api.get("");
-      
-    }
+  
   }
 };
 </script>

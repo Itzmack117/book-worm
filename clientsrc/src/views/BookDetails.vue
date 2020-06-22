@@ -50,7 +50,7 @@
             <h5>Title</h5>
           </div>
           <div class="col-9 pt-2 text-left">
-            <p>The Story of Google</p>
+            <p></p>
           </div>
         </div>
         <div class="row   border-bottom border-dark">
@@ -132,14 +132,18 @@
 <script>
 export default {
   name: "bookDetails",
-  props: ["bookId"],
+  props: ["bookProp"],
   data() {
     return {};
   },
-  computed: {
-    book(){ 
-      return this.$store.state.activeBook 
-      }
+    mounted() {
+        this.$store.dispatch("getActiveBook", this.$route.params.bookId)
+        console.log(this.$store.state.activeBook)
+  },
+    computed: {
+      book(){ 
+        return this.$store.state.activeBook 
+        }
   },
   methods: {},
   components: {}

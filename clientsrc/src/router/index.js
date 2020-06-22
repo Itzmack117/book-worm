@@ -10,12 +10,16 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      component: Inventory
+    },
+    {
       path: '/inventory',
       name: 'inventory',
       component: Inventory
     },
     {
-      path: '/',
+      path: '/bookDetails/:bookId',
       name: 'bookDetails',
       component: BookDetails
     },

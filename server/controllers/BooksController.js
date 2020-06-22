@@ -14,6 +14,7 @@ export class BooksController extends BaseController {
             .use(auth0provider.getAuthorizedUserInfo)
             .get('', this.getAll)
             .get('/:id', this.getById)
+            .post('/results', this.create)
             .put('/:id', this.edit)
             .delete('/:id', this.delete)
     }
@@ -32,6 +33,15 @@ export class BooksController extends BaseController {
             let data = await booksService.getById(req.params.id, req.userInfo.email)
             return res.send(data)
         } catch (error) { next(error) }
+    }
+
+    async create(req, res, next){
+        try {
+            let data = await booksService.createSearch(req.body)
+            return res.send(data)
+        } catch (error) {
+          console.error(error)
+        }
     }
 
     async edit(req, res, next) {
