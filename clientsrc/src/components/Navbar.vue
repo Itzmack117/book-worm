@@ -61,6 +61,7 @@
               aria-describedby="helpId"
             />
           </div>
+
           <button type="submit" class="mx-2 btn btn-outline-primary" @click="searchResults = true">
             <i class="fas fa-search"></i>
           </button>
@@ -92,14 +93,13 @@
               <h5>Order</h5>
             </div>
           </div>
-          
-            <!-- <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+
+          <!-- <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
             {{ book.title }}
-            </router-link>-->
-            <div v-for="book in results" :key="book.id" :bookProp="book">
-              <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-              <div class="apiResults row border-bottom border-primary py-1 bg-info" >
-       
+          </router-link>-->
+          <div v-for="book in results" :key="book.id" :bookProp="book">
+            <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+              <div class="apiResults row border-bottom border-primary py-1 bg-info">
                 <div class="col-2 pt-2 text-left">
                   <h6>{{book.ISBN}}</h6>
                 </div>
@@ -110,16 +110,20 @@
                   <h6>{{book.authors.toString()}}</h6>
                 </div>
                 <div class="col-2 text-center">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >
                     <i class="fas fa-truck"></i>
                   </button>
                 </div>
-        </div>
-        </router-link>
-            </div>
+              </div>
+            </router-link>
+          </div>
 
-            <!-- <apiResults /> -->
-          
+          <!-- <apiResults /> -->
         </div>
       </div>
     </div>
@@ -190,6 +194,11 @@ export default {
       results: []
     };
   },
+  computed: {
+    results() {
+      return this.$store.state.searchResults;
+    }
+  },
   methods: {
     async login() {
       await this.$auth.loginWithPopup();
@@ -202,26 +211,10 @@ export default {
       await this.$auth.logout({ returnTo: window.location.origin });
     },
     async searchBooks() {
-      this.$store.state.searchResults = [];
-      let res = await googleApi.get("" + this.searchApi);   
-      this.results = res.data.items.map(r => {
-        if (r.volumeInfo.industryIdentifiers[0].identifier){
-        return {
-          id: r.id,
-          title: r.volumeInfo.title,
-          subTitle: r.volumeInfo.subtitle,
-          authors: r.volumeInfo.authors,
-          ISBN: r.volumeInfo.industryIdentifiers[0].identifier,
-          pageCount: r.volumeInfo.pageCount,
-          publisher: r.volumeInfo.publisher,
-          description: r.volumeInfo.description,
-          price: r.saleInfo.listPrice
-        };
-        }
-      });
-      this.$store.state.searchResults.push(this.results)
-    },
-  
+      this.results = [];
+      this.$store.dispatch("searchBooks", this.searchApi);
+      this.results = this.$store.state.searchResults;
+    }
   }
 };
 </script>

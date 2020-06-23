@@ -4,6 +4,7 @@ import BookDetails from '../views/BookDetails.vue'
 import Inventory from "../views/Inventory.vue"
 import Order from '../views/Order.vue'
 import { authGuard } from "@bcwdev/auth0-vue"
+import VueRouter from "vue-router"
 
 Vue.use(Router)
 
@@ -37,5 +38,6 @@ export default new Router({
       path: "?#",
       redirect: '/'
     },
-  ]
+  ],
+
 })

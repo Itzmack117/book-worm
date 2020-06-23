@@ -30,8 +30,25 @@ export default new Vuex.Store({
       state.user = user
     },
     setActiveBook(state, id) {
-     let found = state.searchResults.find(b => b.id == id)
-     state.activeBook = found
+      state.activeBook = state.searchResults.filter(b => b.id == id).pop()
+    },
+    searchBooks(state, books) {
+      state.searchResults = books.map(r => {
+        if (r.volumeInfo.industryIdentifiers[0].identifier) {
+          return {
+            id: r.id,
+            title: r.volumeInfo.title,
+            subTitle: r.volumeInfo.subtitle,
+            authors: r.volumeInfo.authors,
+            ISBN: r.volumeInfo.industryIdentifiers[0].identifier,
+            pageCount: r.volumeInfo.pageCount,
+            publisher: r.volumeInfo.publisher,
+            description: r.volumeInfo.description,
+            price: r.saleInfo.listPrice,
+            quantity: 0
+          };
+        }
+      });
     }
   },
   actions: {
@@ -50,25 +67,34 @@ export default new Vuex.Store({
         console.error(err)
       }
     },
+    async searchBooks({ commit, dispatch }, query) {
+      try {
+        let res = await googleApi.get("" + query)
+        commit("searchBooks", res.data.items)
+      } catch (err) {
+        console.error(err)
+      }
 
-    async deleteFromServer({commit, dispatch}, books){
+    },
+
+    async deleteFromServer({ commit, dispatch }, books) {
       let res = await _api.delete("")
       dispatch("postToServer", books)
     },
-    async postToServer({commit, dispatch}, books){
+    async postToServer({ commit, dispatch }, books) {
       let res = await _api.post("/results", books)
       dispatch("getFromServer")
     },
-    async getFromServer({commit, dispatch}){
+    async getFromServer({ commit, dispatch }) {
       let res = await _api.get("/results")
     },
 
-    async getActiveBook({commit, dispatch}, id){
+    async getActiveBook({ commit, dispatch }, id) {
       commit("setActiveBook", id)
     }
   }
-    //#endregion
+  //#endregion
 
 
-  
+
 })
