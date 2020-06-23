@@ -36,7 +36,7 @@
           </li>
         </ul>
         <span class="navbar-text">
-          <button class="btn btn-info" @click="searchForm = true">Order</button>
+          <button class="btn btn-info" @click="searchForm = true">Search</button>
           <button class="btn btn-info" @click="login" v-if="!$auth.isAuthenticated">Login</button>
           <button class="btn btn-danger" @click="logout" v-else>logout</button>
         </span>

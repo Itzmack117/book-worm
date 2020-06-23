@@ -14,6 +14,7 @@ export class OrdersController extends BaseController {
             .use(auth0provider.getAuthorizedUserInfo)
             .get('', this.getAll)
             .get('/:id', this.getById)
+            .post('', this.create)
             .put('/:id', this.edit)
             .delete('/:id', this.delete)
     }
@@ -34,6 +35,12 @@ export class OrdersController extends BaseController {
         } catch (error) { next(error) }
     }
 
+    async create(req, res, next) {
+        try {
+            let data = await ordersService.create(req.body)
+            return res.send(data)
+        } catch (error) { next(error) }
+    }
 
     async edit(req, res, next) {
         try {

@@ -20,7 +20,7 @@
         <h5>ISBN</h5>
       </div>
       <div class="col-3 pt-1">
-        <h5>Quantity</h5>
+        <h5>Quantiddy</h5>
       </div>
       <div class="col-3 pt-1">
         <h5>Cost ($)</h5>
@@ -131,7 +131,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form class="form-inline" style="width: 100%">
+            <form class="form-inline" style="width: 100%" @submit.prevent="addToOrder">
               <div class="form-group" style="width: 100%">
                 <input
                   type="number"
@@ -141,6 +141,7 @@
                   class="mb-2 form-control"
                   placeholder="quantity"
                   aria-describedby="helpId"
+                  v-model="orderQ"
                 />
                 <button type="submit" class="mb-2 ml-4 btn btn-light">Order</button>
               </div>
@@ -159,7 +160,9 @@ export default {
   name: "bookDetails",
   props: ["bookProp"],
   data() {
-    return {};
+    return {
+      orderQ: null
+    };
   },
   mounted() {
     this.$store.dispatch("getActiveBook", this.$route.params.bookId);
@@ -170,7 +173,15 @@ export default {
       return this.$store.state.activeBook;
     }
   },
-  methods: {},
+  methods: {
+    addToOrder() {
+      this.$store.dispatch("addToOrder", {
+        ...this.book,
+        quantity: this.orderQ
+      });
+      console.log(quantity);
+    }
+  },
   components: {}
 };
 </script>

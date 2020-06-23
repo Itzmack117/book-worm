@@ -74,7 +74,6 @@ export default new Vuex.Store({
       } catch (err) {
         console.error(err)
       }
-
     },
 
     async deleteFromServer({ commit, dispatch }, books) {
@@ -91,7 +90,12 @@ export default new Vuex.Store({
 
     async getActiveBook({ commit, dispatch }, id) {
       commit("setActiveBook", id)
-    }
+    },
+    async addToOrder({ commit, dispatch }, data) {
+      try {
+        let res = await _api.post("/books", data)
+      } catch (error) { console.error(error) }
+    },
   }
   //#endregion
 
