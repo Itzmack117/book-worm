@@ -55,7 +55,7 @@
                     <h5 v-else>-------</h5>
                   </div>
                 </div>
-              </router-link>"
+              </router-link>
             </div>
             
           </div>
