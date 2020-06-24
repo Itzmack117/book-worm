@@ -62,7 +62,12 @@ export default new Vuex.Store({
       }
       
       console.log(state.orderCart)
-    }
+    },
+    removeFromCart(state, id){
+      let foundBook = state.orderCart.find(b=> b.id==id)
+      foundBook.orderQuantity = 0;
+      state.orderCart = state.orderCart.filter(b => b.id != id)
+    },
   },
   actions: {
     //#region -- AUTH STUFF --
@@ -106,6 +111,9 @@ export default new Vuex.Store({
     },
     async addToOrder({commit, dispatch}, book){
       commit("addToOrder", book)
+    },
+    async removeFromCart({commit, dispatch}, id){
+      commit("removeFromCart", id)
     }
   }
   //#endregion
