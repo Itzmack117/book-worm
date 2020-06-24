@@ -97,7 +97,7 @@
           <!-- <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
             {{ book.title }}
           </router-link>-->
-          <div v-for="book in results" :key="book.id" :bookProp="book">
+          <div v-for="book in books" :key="book.id" :bookProp="book">
             <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
               <div class="apiResults row border-bottom border-primary py-1 bg-info">
                 <div class="col-2 pt-2 text-left">
@@ -195,7 +195,7 @@ export default {
     };
   },
   computed: {
-    results() {
+    books() {
       return this.$store.state.searchResults;
     }
   },

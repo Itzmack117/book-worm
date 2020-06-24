@@ -143,7 +143,7 @@
                   aria-describedby="helpId"
                   v-model="orderQ"
                 />
-                <button type="submit" class="mb-2 ml-4 btn btn-light">Order</button>
+                <button type="submit" class="mb-2 ml-4 btn btn-light" data-dismiss="modal">Order</button>
               </div>
             </form>
           </div>
