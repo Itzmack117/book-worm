@@ -190,8 +190,7 @@ export default {
     return {
       searchForm: false,
       searchResults: false,
-      searchApi: "",
-      results: []
+      searchApi: ""
     };
   },
   computed: {

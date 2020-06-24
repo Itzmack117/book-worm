@@ -47,20 +47,21 @@ export default new Vuex.Store({
             description: r.volumeInfo.description,
             price: r.saleInfo.listPrice,
             quantity: 0,
-            orderQuantity: 0
+            orderQuantity: 0,
+            img: r.volumeInfo.imageLinks.thumbnail
           };
         }
       });
     },
-    addToOrder(state, book){
-      let foundBook = state.orderCart.find(b=> b.id == book.id)
-      if(foundBook){
+    addToOrder(state, book) {
+      let foundBook = state.orderCart.find(b => b.id == book.id)
+      if (foundBook) {
         foundBook.orderQuantity += book.orderQuantity
         foundBook.orderQuantity /= 2
       } else {
         state.orderCart.push(book)
       }
-      
+
       console.log(state.orderCart)
     },
     removeFromCart(state, id){
@@ -109,7 +110,7 @@ export default new Vuex.Store({
     async getActiveBook({ commit, dispatch }, id) {
       commit("setActiveBook", id)
     },
-    async addToOrder({commit, dispatch}, book){
+    async addToOrder({ commit, dispatch }, book) {
       commit("addToOrder", book)
     },
     async removeFromCart({commit, dispatch}, id){
@@ -117,5 +118,5 @@ export default new Vuex.Store({
     }
   }
   //#endregion
-  })
+})
 
