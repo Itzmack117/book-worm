@@ -50,12 +50,7 @@
 
     <div class="row">
       <div class="col-5 text-left pl-0">
-        <img
-          src="http://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE73utqwg-BFMcDxI3oWIQenLjNnD233073Wd4ifiiyfFjHieIz0sQpk16gxcp7Doc2pLPHYKJktgiDnM2dGw0rTO-rUQr8pYiYFJwONGTz9ofEnop2cTWLPWAR8T8K6O0Db4hk6A&source=gbs_api"
-          alt
-          srcset
-          class="border border-primary mt-2 shadow"
-        />
+        <img :src="book.img" alt srcset class="border border-primary mt-2 shadow picture" />
       </div>
       <div class="col-6 mr-4">
         <div class="row mt-5 border-bottom border-top border-dark">
@@ -125,8 +120,12 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="orderModalLabel">How Many Would You Like To Order?  <br><span v-if="book.orderQuantity > 0">There are {{book.orderQuantity}} in your cart</span></h5>
-            
+            <h5 class="modal-title" id="orderModalLabel">
+              How Many Would You Like To Order?
+              <br />
+              <span v-if="book.orderQuantity > 0">There are {{book.orderQuantity}} in your cart</span>
+            </h5>
+
             <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">x</span>
             </button>
@@ -149,9 +148,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            
           </div>
         </div>
       </div>
@@ -178,10 +175,8 @@ export default {
   },
   methods: {
     addToOrder() {
-      this.book.orderQuantity += this.orderQ
-      this.$store.dispatch("addToOrder",
-       this.book,
-      );
+      this.book.orderQuantity += this.orderQ;
+      this.$store.dispatch("addToOrder", this.book);
       console.log(this.book);
     }
   },
@@ -200,6 +195,9 @@ export default {
 }
 .titleFont {
   font-size: 1.5em;
+}
+.picture {
+  width: 22.5em;
 }
 </style>
 
