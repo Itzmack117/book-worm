@@ -50,7 +50,7 @@
     </div>
 
     <div class="row">
-      <div class="col-5 text-left pl-0">
+      <div class="col-5 text-center pl-0">
         <img :src="book.img" alt srcset class="border border-primary mt-2 shadow picture" />
       </div>
       <div class="col-6 mr-4">
@@ -202,7 +202,7 @@ export default {
   font-size: 1.5em;
 }
 .picture {
-  width: 22.5em;
+  width: 17em;
 }
 </style>
 
