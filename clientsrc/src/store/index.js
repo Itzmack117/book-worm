@@ -34,22 +34,32 @@ export default new Vuex.Store({
       state.activeBook = state.searchResults.filter(b => b.id == id).pop()
     },
     searchBooks(state, books) {
-      state.searchResults = books.map(r => {
-        if (r.volumeInfo.industryIdentifiers[0].identifier) {
+      state.searchResults = books.filter(r => r.volumeInfo.industryIdentifiers).map(r => {
+        try {
+
+          if (r.volumeInfo.industryIdentifiers[0].identifier) {
+            return {
+              id: r.id,
+              title: r.volumeInfo.title,
+              subTitle: r.volumeInfo.subtitle,
+              authors: r.volumeInfo.authors,
+              ISBN: r.volumeInfo.industryIdentifiers[0].identifier,
+              pageCount: r.volumeInfo.pageCount,
+              publisher: r.volumeInfo.publisher,
+              description: r.volumeInfo.description,
+              price: r.saleInfo.listPrice,
+              quantity: 0,
+              orderQuantity: 0,
+              img: r.volumeInfo
+                ? r.volumeInfo.imageLinks
+                  ? r.volumeInfo.imageLinks.thumbnail : ""
+                : ""
+            };
+          }
+        } catch (e) {
           return {
-            id: r.id,
-            title: r.volumeInfo.title,
-            subTitle: r.volumeInfo.subtitle,
-            authors: r.volumeInfo.authors,
-            ISBN: r.volumeInfo.industryIdentifiers[0].identifier,
-            pageCount: r.volumeInfo.pageCount,
-            publisher: r.volumeInfo.publisher,
-            description: r.volumeInfo.description,
-            price: r.saleInfo.listPrice,
-            quantity: 0,
-            orderQuantity: 0,
-            img: r.volumeInfo.imageLinks.thumbnail
-          };
+
+          }
         }
       });
     },
