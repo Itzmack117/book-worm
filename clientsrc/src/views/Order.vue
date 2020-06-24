@@ -13,10 +13,10 @@
           <div class="col-2 pt-2 text-left">
             <h5>ISBN</h5>
           </div>
-          <div class="col-4 pt-2 text-left">
+          <div class="col-3 pt-2 text-left">
             <h5>Book Title</h5>
           </div>
-          <div class="col-2 pt-2 text-center">
+          <div class="col-1 pt-2 text-center">
             <h5>Quantity</h5>
           </div>
           <div class="col-2 pt-2 text-center">
@@ -24,6 +24,9 @@
           </div>
           <div class="col-2 pt-2 text-center">
             <h5>Total ($)</h5>
+          </div>
+          <div class="col-2 pt-2 text-center">
+            <h5>Remove</h5>
           </div>
         </div>
 
@@ -38,11 +41,11 @@
                     <h5 v-if="book.ISBN">{{book.ISBN}}</h5>
                     <h5 v-else>ISBN Not Given</h5>
                   </div>
-                  <div class="col-4 border-right border-dark pt-2 text-left">
+                  <div class="col-3 border-right border-dark pt-2 text-left">
                     <h5 v-if="book.title">{{book.title}}</h5>
                     <h5 v-else>No Title Given</h5>
                   </div>
-                  <div class="col-2 border-right border-dark pt-2 text-right">
+                  <div class="col-1 border-right border-dark pt-2 text-right">
                     <h5 v-if="book.orderQuantity">{{book.orderQuantity}}</h5>
                     <h5 v-else>N/A</h5>
                   </div>
@@ -50,9 +53,12 @@
                     <h5 v-if="book.price">{{book.price.amount}}</h5>
                     <h5 v-else>No Price Given</h5>
                   </div>
-                  <div class="col-2 pt-2 text-right">
+                  <div class="col-2 pt-2 border-right border-dark text-right">
                     <h5 v-if="book.price">{{book.price.amount * book.orderQuantity}}</h5>
                     <h5 v-else>-------</h5>
+                  </div>
+                  <div class="col-2 pt-2 text-center">
+                    <i class="fas fa-truck"></i>
                   </div>
                 </div>
               </router-link>
