@@ -20,7 +20,7 @@
         <h5>ISBN</h5>
       </div>
       <div class="col-3 pt-1">
-        <h5>Quantiddy</h5>
+        <h5>Quantity</h5>
       </div>
       <div class="col-3 pt-1">
         <h5>Cost ($)</h5>
@@ -175,11 +175,11 @@ export default {
   },
   methods: {
     addToOrder() {
-      this.$store.dispatch("addToOrder", {
-        ...this.book,
-        quantity: this.orderQ
-      });
-      console.log(quantity);
+      this.book.orderQuantity += this.orderQ
+      // this.$store.dispatch("addToOrder",
+      //  this.book,
+      // );
+      console.log(this.book);
     }
   },
   components: {}
@@ -199,3 +199,4 @@ export default {
   font-size: 1.5em;
 }
 </style>
+

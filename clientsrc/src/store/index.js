@@ -45,7 +45,8 @@ export default new Vuex.Store({
             publisher: r.volumeInfo.publisher,
             description: r.volumeInfo.description,
             price: r.saleInfo.listPrice,
-            quantity: 0
+            quantity: 0,
+            orderQuantity: 0
           };
         }
       });
