@@ -144,7 +144,7 @@
                   aria-describedby="helpId"
                   v-model.number="orderQ"
                 />
-                <button type="submit" class="mb-2 ml-4 btn btn-light" data-dismiss="modal">Order</button>
+                <button type="submit" class="mb-2 ml-4 btn btn-light">Order</button>
               </div>
             </form>
           </div>
@@ -182,6 +182,7 @@ export default {
       this.$store.dispatch("addToOrder",
        this.book,
       );
+      $("#orderModal").modal("hide");
       console.log(this.book);
     }
   },
