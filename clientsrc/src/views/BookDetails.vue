@@ -125,7 +125,8 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="orderModalLabel">How Many Would You Like To Order?</h5>
+            <h5 class="modal-title" id="orderModalLabel">How Many Would You Like To Order?  <br><span v-if="book.orderQuantity > 0">There are {{book.orderQuantity}} in your cart</span></h5>
+            
             <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">x</span>
             </button>
@@ -148,7 +149,9 @@
             </form>
           </div>
           <div class="modal-footer">
+            
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            
           </div>
         </div>
       </div>
