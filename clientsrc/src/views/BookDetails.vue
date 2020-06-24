@@ -7,6 +7,7 @@
       </div>
       <div class="col-3 mt-4 mb-2">
         <button
+         v-if="book.price" 
           type="button"
           class="btn btn-primary float-right"
           data-toggle="modal"
