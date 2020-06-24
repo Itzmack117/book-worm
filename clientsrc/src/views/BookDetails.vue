@@ -141,7 +141,7 @@
                   class="mb-2 form-control"
                   placeholder="quantity"
                   aria-describedby="helpId"
-                  v-model="orderQ"
+                  v-model.number="orderQ"
                 />
                 <button type="submit" class="mb-2 ml-4 btn btn-light">Order</button>
               </div>
@@ -161,7 +161,7 @@ export default {
   props: ["bookProp"],
   data() {
     return {
-      orderQ: null
+      orderQ: 0
     };
   },
   mounted() {
