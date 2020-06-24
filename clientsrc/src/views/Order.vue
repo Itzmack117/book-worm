@@ -58,7 +58,7 @@
                     <h5 v-else class="text-center">-------</h5>
                   </div>
                   <div class="col-1 pt-2 text-center">
-                    <i class="fas fa-trash-alt text-danger"></i>
+                    <i class="fas fa-trash-alt text-danger pointer"></i>
                   </div>
                 </div>
               </router-link>
@@ -134,5 +134,8 @@ export default {
   max-height: 45vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+.pointer{
+  cursor: pointer;
 }
 </style>
