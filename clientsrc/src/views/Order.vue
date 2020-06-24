@@ -16,7 +16,7 @@
           <div class="col-4 pt-2 text-left">
             <h5>Book Title</h5>
           </div>
-          <div class="col-2 pt-2 text-center">
+          <div class="col-1 pt-2 text-center">
             <h5>Quantity</h5>
           </div>
           <div class="col-2 pt-2 text-center">
@@ -25,306 +25,54 @@
           <div class="col-2 pt-2 text-center">
             <h5>Total ($)</h5>
           </div>
+          <div class="col-1 pt-2 ">
+            <h5 class="text-left">Remove</h5>
+          </div>
         </div>
 
         <div class="row orderContents">
           <div class="col-12">
 
 
-
-            <div class="row border-bottom border-dark bg-light">
-              <div class="col-2 border-right border-dark pt-2 text-left">
-                <h5>6969696969</h5>
-              </div>
-             <div class="col-4 border-right border-dark pt-2 text-left">
-                <h5>69 Shades of Orange</h5>
-              </div>
-              <div class="col-2 border-right border-dark pt-2 text-right">
-                <h5>11</h5>
-              </div>
-             <div class="col-2 border-right border-dark pt-2 text-right">
-               <h5>12.00</h5>
-             </div>
-              <div class="col-2 pt-2 text-right">
-                <h5>132.00</h5>
-              </div>
+            <div v-for="book in cart" :key="book.id" :bookProp="book">             
+                <div class="row border-bottom border-dark bg-light">
+                  <div class="col-2 border-right border-dark pt-2 text-left">
+                     <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+                    <h5 v-if="book.ISBN">{{book.ISBN}}</h5>
+                    <h5 v-else>ISBN Not Given</h5>
+                    </router-link>
+                  </div>
+                  <div class="col-4 border-right border-dark pt-2 text-left">
+                     <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+                    <h5 v-if="book.title">{{book.title}}</h5>
+                    <h5 v-else>No Title Given</h5>
+                    </router-link>
+                  </div>
+                  <div class="col-1 border-right border-dark pt-2 text-right">
+                     <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+                    <h5 v-if="book.orderQuantity">{{book.orderQuantity}}</h5>
+                    <h5 v-else>N/A</h5>
+                     </router-link>
+                  </div>
+                  <div class="col-2 border-right border-dark pt-2 text-right">
+                     <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+                    <h5 v-if="book.price">{{book.price.amount}}</h5>
+                    <h5 v-else>No Price Given</h5>
+                     </router-link>
+                  </div>
+                  <div class="col-2 pt-2 border-right border-dark text-right">
+                     <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+                    <h5 v-if="book.price">{{book.price.amount * book.orderQuantity}}</h5>
+                    <h5 v-else class="text-center">-------</h5>
+                     </router-link>
+                  </div>
+                  <div class="col-1 pt-2 text-center">
+                    <i class="fas fa-trash-alt text-danger pointer" @click="removeFromCart(book.id)"></i>
+                  </div>
+                </div>              
             </div>
-
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
+            
           </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-        <div class="row border-bottom border-dark bg-light">
-          <div class="col-2 border-right border-dark pt-2 text-left">
-            <h5>6969696969</h5>
-          </div>
-          <div class="col-4 border-right border-dark pt-2 text-left">
-            <h5>69 Shades of Orange</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>11</h5>
-          </div>
-          <div class="col-2 border-right border-dark pt-2 text-right">
-            <h5>12.00</h5>
-          </div>
-          <div class="col-2 pt-2 text-right">
-            <h5>132.00</h5>
-          </div>
-        </div>
-
-
-                </div>
         </div>
 
       </div>
@@ -359,7 +107,7 @@
       </div>
     </div>
 
-    <button type="button" class=" mt-3 btn btn-primary float-right">CONFIRM ORDER</button>
+    <button type="button" class=" mt-3 mb-3 btn btn-primary float-right">CONFIRM ORDER</button>
 
 
   </div>
@@ -368,9 +116,28 @@
 <script>
 export default {
   name: "order",
+  data(){
+    return{
+    
+    }
+  },
+    computed: {
+      cart(){
+        return this.$store.state.orderCart
+      }
+    },
+    mounted(){
+      // this.$store.dispatch("getCart")
+    },
+    methods: {
+      removeFromCart(id){
+        this.$store.dispatch("removeFromCart", id)
+      }
+    }
+  }
 
 
-};
+
 </script>
 <style scoped>
 *{
@@ -380,5 +147,8 @@ export default {
   max-height: 45vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+.pointer{
+  cursor: pointer;
 }
 </style>

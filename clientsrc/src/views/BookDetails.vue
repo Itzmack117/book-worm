@@ -7,6 +7,7 @@
       </div>
       <div class="col-3 mt-4 mb-2">
         <button
+         v-if="book.price" 
           type="button"
           class="btn btn-primary float-right"
           data-toggle="modal"
@@ -66,7 +67,7 @@
             <h5>Subtitle</h5>
           </div>
           <div class="col-9 pt-2 text-left">
-            <p v-if="book.subtitle">{{book.subtitle}}</p>
+            <p v-if="book.subTitle">{{book.subTitle}}</p>
             <p v-else>No Subtitle..</p>
           </div>
         </div>
@@ -175,8 +176,12 @@ export default {
   },
   methods: {
     addToOrder() {
-      this.book.orderQuantity += this.orderQ;
-      this.$store.dispatch("addToOrder", this.book);
+
+      this.book.orderQuantity += this.orderQ
+      this.$store.dispatch("addToOrder",
+       this.book,
+      );
+      $("#orderModal").modal("hide");
       console.log(this.book);
     }
   },
