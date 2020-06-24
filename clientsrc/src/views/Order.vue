@@ -8,6 +8,24 @@
     
     <div class="row mt-3">
       <div class="col-12 shadow">
+                        <div class="row bg-gradient-light py-2" v-if="removeItemForm">
+                  <div class="col-6 mx-auto">
+                    <form class="form-inline">
+                      <div class="form-group">
+                        
+                        <input type="number" name="" id="" class="form-control" placeholder="Remove How Many?" aria-describedby="helpId" v-model.number="removeQuantity">
+                        
+                      </div>
+                      <div class="row">
+                        <div class="col-12 mx-auto">
+                          <button class="btn btn-outline-danger ml-1">Remove All</button>
+                          <button class="btn btn-outline-primary ">Remove</button>
+                          <button class="btn btn-outline-primary " @click="removeItemForm = false">Cancel</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div> 
     
         <div class="row border-bottom border-dark bg-gradient-primary text-white">
           <div class="col-2 pt-2 text-left">
@@ -56,20 +74,21 @@
                   </div>
                   <div class="col-2 border-right border-dark pt-2 text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 v-if="book.price">{{book.price.amount}}</h5>
+                    <h5 v-if="book.price">{{book.price.amount.toFixed(2)}}</h5>
                     <h5 v-else>No Price Given</h5>
                      </router-link>
                   </div>
                   <div class="col-2 pt-2 border-right border-dark text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 v-if="book.price">{{book.price.amount * book.orderQuantity}}</h5>
+                    <h5 v-if="book.price">{{(book.price.amount * book.orderQuantity).toFixed(2)}}</h5>
                     <h5 v-else class="text-center">-------</h5>
                      </router-link>
                   </div>
                   <div class="col-1 pt-2 text-center">
-                    <i class="fas fa-trash-alt text-danger pointer" @click="removeFromCart(book.id)"></i>
+                    <i class="fas fa-trash-alt text-danger pointer" @click=" removeItemForm = true"></i> <!--removeFromCart(book.id);-->
                   </div>
-                </div>              
+                </div>
+             
             </div>
             
           </div>
@@ -118,7 +137,7 @@ export default {
   name: "order",
   data(){
     return{
-    
+      removeItemForm : false,
     }
   },
     computed: {
