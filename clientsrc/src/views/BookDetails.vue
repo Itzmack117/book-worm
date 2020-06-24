@@ -72,7 +72,7 @@
             <h5>Subtitle</h5>
           </div>
           <div class="col-9 pt-2 text-left">
-            <p v-if="book.subtitle">{{book.subtitle}}</p>
+            <p v-if="book.subTitle">{{book.subTitle}}</p>
             <p v-else>No Subtitle..</p>
           </div>
         </div>
