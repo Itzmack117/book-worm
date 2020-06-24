@@ -23,7 +23,8 @@ export default new Vuex.Store({
   state: {
     user: {},
     searchResults: [],
-    activeBook: {}
+    activeBook: {},
+    orderCart: [],
   },
   mutations: {
     setUser(state, user) {
@@ -50,6 +51,11 @@ export default new Vuex.Store({
           };
         }
       });
+    },
+    addToOrder(state, book){
+      state.orderCart.push(book)
+      if(state.orderCart.)
+      console.log(state.orderCart)
     }
   },
   actions: {
@@ -92,11 +98,8 @@ export default new Vuex.Store({
     async getActiveBook({ commit, dispatch }, id) {
       commit("setActiveBook", id)
     },
-    async addToOrder({ commit, dispatch }, data) {
-      try {
-        let res = await _api.post("/books", data)
-      } catch (error) { console.error(error) }
-    },
+    async addToOrder({commit, dispatch}, book)
+      commit("addToOrder", book)
   }
   //#endregion
 
