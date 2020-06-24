@@ -179,9 +179,9 @@ export default {
   methods: {
     addToOrder() {
       this.book.orderQuantity += this.orderQ
-      // this.$store.dispatch("addToOrder",
-      //  this.book,
-      // );
+      this.$store.dispatch("addToOrder",
+       this.book,
+      );
       console.log(this.book);
     }
   },

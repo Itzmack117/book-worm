@@ -53,8 +53,14 @@ export default new Vuex.Store({
       });
     },
     addToOrder(state, book){
-      state.orderCart.push(book)
-      if(state.orderCart.)
+      let foundBook = state.orderCart.find(b=> b.id == book.id)
+      if(foundBook){
+        foundBook.orderQuantity += book.orderQuantity
+        foundBook.orderQuantity /= 2
+      } else {
+        state.orderCart.push(book)
+      }
+      
       console.log(state.orderCart)
     }
   },
@@ -98,11 +104,10 @@ export default new Vuex.Store({
     async getActiveBook({ commit, dispatch }, id) {
       commit("setActiveBook", id)
     },
-    async addToOrder({commit, dispatch}, book)
+    async addToOrder({commit, dispatch}, book){
       commit("addToOrder", book)
+    }
   }
   //#endregion
+  })
 
-
-
-})
