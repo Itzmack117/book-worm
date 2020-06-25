@@ -10,10 +10,10 @@
       <div class="col-12 shadow">
                 <div class="row bg-gradient-light py-2" v-if="removeItemForm">
                   <div class="col mx-auto">
-                    <form class="form-inline">
+                    <form class="form-inline" @submit.prevent="editOrderQuantity">
                       <div class="form-group">
                         
-                        <input type="number" name="" id="" class="form-control" placeholder="Remove How Many?" aria-describedby="helpId" v-model.number="removeQuantity">
+                        <input min="0"  type="number" name="" id="" class="form-control" placeholder="Remove How Many?" aria-describedby="helpId" v-model.number="removeQuantity">
                         
                       </div>
                       <div class="row">
@@ -53,7 +53,7 @@
 
 
             <div v-for="book in cart" :key="book.id" :bookProp="book">             
-                <div class="row border-bottom border-dark bg-light">
+                <div v-if="book.orderQuantity > 0" class="row border-bottom border-dark bg-light">
                   <div class="col-2 border-right border-dark pt-2 text-left">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
                     <h5 v-if="book.ISBN">{{book.ISBN}}</h5>
@@ -85,7 +85,7 @@
                      </router-link>
                   </div>
                   <div class="col-1 pt-2 text-center">
-                    <i class="fas fa-trash-alt text-danger pointer" @click="removeItemForm = true"></i>
+                    <i class="fas fa-trash-alt text-danger pointer" @click="removeItemForm = true; setForRemove(book)"></i>
                   </div>
                 </div>
              
@@ -160,6 +160,24 @@ export default {
       
     },
     methods: {
+      editOrderQuantity(){
+        let editedBook= {
+          qty:  this.removeQuantity,
+          book:  this.bookToDelete
+        }
+        console.log("qty")
+        console.log(editedBook.qty)
+        if(this.bookToDelete.orderQuantity >= this.removeQuantity){
+          this.$store.dispatch("editOrderQuantity", editedBook)
+        }
+        this.$store.dispatch("getOrderQuantity")
+        this.$store.dispatch("getOrderCost")
+
+      },
+      setForRemove(book){
+        this.bookToDelete = this.cart.find(b => b.id == book.id)
+
+      }
     }
   }
 
