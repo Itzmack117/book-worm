@@ -20,7 +20,7 @@
                         <div class="col-12 mx-auto">
                           <button class="btn btn-outline-danger ml-1">Remove All</button>
                           <button class="btn btn-outline-primary" type="submit">Remove</button>
-                          <button class="btn btn-outline-primary" @click="removeItemForm = false">Cancel</button>
+                          <button class="btn btn-outline-primary" @click="removeQuantity = 0; removeItemForm = false">Cancel</button>
                         </div>
                       </div>
                     </form>
@@ -74,13 +74,13 @@
                   </div>
                   <div class="col-2 border-right border-dark pt-2 text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 v-if="book.price">{{book.price.amount.toFixed(2)}}</h5>
+                    <h5 v-if="book.price">{{book.price.toFixed(2)}}</h5>
                     <h5 v-else>No Price Given</h5>
                      </router-link>
                   </div>
                   <div class="col-2 pt-2 border-right border-dark text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 v-if="book.price">{{(book.price.amount * book.orderQuantity).toFixed(2)}}</h5>
+                    <h5 v-if="book.price">{{(book.price * book.orderQuantity).toFixed(2)}}</h5>
                     <h5 v-else class="text-center">-------</h5>
                      </router-link>
                   </div>
@@ -126,7 +126,7 @@
       </div>
     </div>
 
-    <button type="button" class=" mt-3 mb-3 btn btn-primary float-right">CONFIRM ORDER</button>
+    <button type="button" class=" mt-3 mb-3 btn btn-primary float-right" @click="confirmOrder">CONFIRM ORDER</button>
 
 
   </div>
@@ -177,6 +177,12 @@ export default {
       setForRemove(book){
         this.bookToDelete = this.cart.find(b => b.id == book.id)
 
+      },
+
+      confirmOrder(){
+        this.cart.forEach(book => {
+          this.$store.dispatch("addToInventory", book)
+        });
       }
     }
   }

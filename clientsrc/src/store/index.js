@@ -41,12 +41,12 @@ export default new Vuex.Store({
               id: r.id,
               title: r.volumeInfo ? r.volumeInfo.title : "No Title",
               subTitle: r.volumeInfo ? r.volumeInfo.subtitle : "No Subtitle",
-              authors: r.volumeInfo ? r.volumeInfo.authors : "",
+              authors: r.volumeInfo ? r.volumeInfo.authors ? r.volumeInfo.authors.toString() : "" : "",
               ISBN: r.volumeInfo ? r.volumeInfo.industryIdentifiers[0] ? r.volumeInfo.industryIdentifiers[0].identifier : "0" : "1",
               pageCount: r.volumeInfo ? r.volumeInfo.pageCount : "Unknown",
               publisher: r.volumeInfo ? r.volumeInfo.publisher : "Unknown",
               description: r.volumeInfo ? r.volumeInfo.description : "No Description",
-              price: r.saleInfo ? r.saleInfo.listPrice : "Not for sale",
+              price: r.saleInfo ? r.saleInfo.listPrice ? r.saleInfo.listPrice.amount : 0 : 0,
               quantity: 0,
               orderQuantity: 0,
               img: r.volumeInfo
@@ -75,7 +75,7 @@ export default new Vuex.Store({
     getOrderCost(state){
       let total = 0
       let books = state.orderCart.books.forEach(b => {
-        total += (b.price.amount * b.orderQuantity)
+        total += (b.price * b.orderQuantity)
       })
       state.orderCart.cost = total
     },
@@ -126,9 +126,14 @@ export default new Vuex.Store({
       let res = await _api.delete("")
       dispatch("postToServer", books)
     },
-    async postToServer({ commit, dispatch }, books) {
-      let res = await _api.post("/results", books)
-      dispatch("getFromServer")
+    async addToInventory({ commit, dispatch }, book) {
+      try {
+        console.log(book)
+        let res = await _api.post("/books", book)
+      } catch (error) {
+        console.error(error)
+      }
+     
     },
     async getFromServer({ commit, dispatch }) {
       let res = await _api.get("/results")
@@ -147,7 +152,6 @@ export default new Vuex.Store({
       commit("getOrderQuantity")
     },
     editOrderQuantity({commit}, book){
-      debugger;
       commit("editOrderQuantity", book)
     }
   }

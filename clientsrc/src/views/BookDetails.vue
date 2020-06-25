@@ -7,7 +7,7 @@
       </div>
       <div class="col-3 mt-4 mb-2">
         <button
-         v-if="book.price" 
+         v-if="book.price > 0" 
           type="button"
           class="btn btn-primary float-right"
           data-toggle="modal"
@@ -40,11 +40,11 @@
         <h5 v-else>0</h5>
       </div>
       <div class="col-3 py-2 border-right border-primary text-right">
-        <h5 v-if="book.price">{{book.price.amount}}</h5>
+        <h5 v-if="book.price">{{book.price}}</h5>
         <h5 v-else>Not for sale</h5>
       </div>
       <div class="col-3 py-2 text-right">
-        <h5 v-if="book.price">{{book.price.amount * book.quantity}}</h5>
+        <h5 v-if="book.price">{{book.price * book.quantity}}</h5>
         <h5 v-else>----</h5>
       </div>
     </div>
