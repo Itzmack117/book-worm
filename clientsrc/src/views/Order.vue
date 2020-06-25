@@ -8,8 +8,8 @@
     
     <div class="row mt-3">
       <div class="col-12 shadow">
-                        <div class="row bg-gradient-light py-2" v-if="removeItemForm">
-                  <div class="col-6 mx-auto">
+                <div class="row bg-gradient-light py-2" v-if="removeItemForm">
+                  <div class="col mx-auto">
                     <form class="form-inline">
                       <div class="form-group">
                         
@@ -19,8 +19,8 @@
                       <div class="row">
                         <div class="col-12 mx-auto">
                           <button class="btn btn-outline-danger ml-1">Remove All</button>
-                          <button class="btn btn-outline-primary ">Remove</button>
-                          <button class="btn btn-outline-primary " @click="removeItemForm = false">Cancel</button>
+                          <button class="btn btn-outline-primary" type="submit">Remove</button>
+                          <button class="btn btn-outline-primary" @click="removeItemForm = false">Cancel</button>
                         </div>
                       </div>
                     </form>
@@ -85,7 +85,7 @@
                      </router-link>
                   </div>
                   <div class="col-1 pt-2 text-center">
-                    <i class="fas fa-trash-alt text-danger pointer" @click=" removeItemForm = true"></i>
+                    <i class="fas fa-trash-alt text-danger pointer" @click="removeItemForm = true"></i>
                   </div>
                 </div>
              
@@ -117,10 +117,10 @@
           <h5>TOTAL</h5>
         </div>
         <div class="col-4 pt-2 bg-info text-right border-bottom border-right border-dark border-left">
-          <h5>total quantity</h5>
+          <h5>{{this.quantity}}</h5>
         </div>
         <div class="col-4 pt-2 bg-info text-right border-bottom border-right border-dark">
-          <h5>total cost</h5>
+          <h5>{{this.cost.toFixed(2)}}</h5>
         </div>
         </div>
       </div>
@@ -138,20 +138,28 @@ export default {
   data(){
     return{
       removeItemForm : false,
+      bookToDelete: {},
+      removeQuantity: 0
     }
   },
     computed: {
       cart(){
-        return this.$store.state.orderCart
+        return this.$store.state.orderCart.books
+      },
+      quantity(){
+        return this.$store.state.orderCart.quantity
+      },
+      cost(){
+        return this.$store.state.orderCart.cost
       }
     },
     mounted(){
       // this.$store.dispatch("getCart")
+      this.$store.dispatch("getOrderQuantity")
+      this.$store.dispatch("getOrderCost")
+      
     },
     methods: {
-      removeFromCart(id){
-        this.$store.dispatch("removeFromCart", id)
-      }
     }
   }
 

@@ -24,7 +24,7 @@ export default new Vuex.Store({
     user: {},
     searchResults: [],
     activeBook: {},
-    orderCart: [],
+    orderCart: {quantity: 0, cost: 0, books: []},
   },
   mutations: {
     setUser(state, user) {
@@ -63,21 +63,29 @@ export default new Vuex.Store({
     },
 
     addToOrder(state, book) {
-      let foundBook = state.orderCart.find(b => b.id == book.id)
+      let foundBook = state.orderCart.books.find(b => b.id == book.id)
       if (foundBook) {
         foundBook.orderQuantity += book.orderQuantity
         foundBook.orderQuantity /= 2
       } else {
-        state.orderCart.push(book)
+        state.orderCart.books.push(book)
       }
+    },
 
-      console.log(state.orderCart)
+    getOrderCost(state){
+      let total = 0
+      let books = state.orderCart.books.forEach(b => {
+        total += (b.price.amount * b.orderQuantity)
+      })
+      state.orderCart.cost = total
     },
-    removeFromCart(state, id) {
-      let foundBook = state.orderCart.find(b => b.id == id)
-      foundBook.orderQuantity = 0;
-      state.orderCart = state.orderCart.filter(b => b.id != id)
-    },
+    getOrderQuantity(state){
+      let total = 0
+      let books = state.orderCart.books.forEach(b => {
+        total += b.orderQuantity
+      })
+      state.orderCart.quantity = total
+    }
   },
   actions: {
     //#region -- AUTH STUFF --
@@ -124,6 +132,12 @@ export default new Vuex.Store({
     },
     async removeFromCart({ commit, dispatch }, id) {
       commit("removeFromCart", id)
+    },
+    getOrderCost({commit}){
+      commit("getOrderCost")
+    },
+    getOrderQuantity({commit}){
+      commit("getOrderQuantity")
     }
   }
   //#endregion
