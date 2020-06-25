@@ -24,46 +24,18 @@
       </div>
     </div> 
 
-      <div class="row border-bottom border-dark bg-info">
+      <div class="row border-bottom border-dark bg-info" v-for="book in books" :key="book" :bookProp="book">
       <div class="col-3 pt-2 text-left border-right border-dark">
-        <p>0440335701</p>
+        <p>{{book.ISBN}}</p>
       </div>
       <div class="col-5 pt-2 border-right border-dark text-left">
-        <p>The Google Story</p>
+        <p>{{book.title}}</p>
       </div>
       <div class="col-2 pt-2 text-right border-right border-dark">
-        <p>42069</p>
+        <p>{{book.quantity}}</p>
       </div>
       <div class="col-2 pt-2 text-right">
-        <p>13.37</p>
-      </div>
-    </div>
-          <div class="row border-bottom border-dark bg-light">
-      <div class="col-3 pt-2 text-left border-right border-dark">
-        <p>0440335701</p>
-      </div>
-      <div class="col-5 pt-2 border-right border-dark text-left">
-        <p>Diary of a Wimpy Kid 2</p>
-      </div>
-      <div class="col-2 pt-2 text-right border-right border-dark">
-        <p>21</p>
-      </div>
-      <div class="col-2 pt-2 text-right">
-        <p>10.99</p>
-      </div>
-    </div>
-          <div class="row border-bottom border-dark bg-info">
-      <div class="col-3 pt-2 text-left border-right border-dark">
-        <p>1</p>
-      </div>
-      <div class="col-5 pt-2 border-right border-dark text-left">
-        <p>The Bootstrap Bible</p>
-      </div>
-      <div class="col-2 pt-2 text-right border-right border-dark">
-        <p>1</p>
-      </div>
-      <div class="col-2 pt-2 text-right">
-        <p>69.00</p>
+        <p>{{book.price}}</p>
       </div>
     </div>
      </div>
