@@ -58,18 +58,16 @@
       <div v-if="searchResults" class="row bg-light">
         <div class="col-10 mx-auto mb-2">
           <div class="row bg-gradient-primary border-bottom border-primary" id>
-            <div class="col-2 pt-2 text-left text-white">
+            <div class="col-3 pt-2 text-left text-white">
               <h5>ISBN</h5>
             </div>
-            <div class="col-5 pt-2 text-left text-white">
+            <div class="col-6 pt-2 text-left text-white">
               <h5>Title</h5>
             </div>
             <div class="col-3 pt-2 text-left text-white">
-              <h5>Author</h5>
+              <h5>Author(s)</h5>
             </div>
-            <div class="col-2 pt-2 text-white text-center">
-              <h5>Order</h5>
-            </div>
+
           </div>
 
           <!-- <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
@@ -78,25 +76,19 @@
           <div v-for="book in books" :key="book.id" :bookProp="book">
             <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
               <div class="apiResults row border-bottom border-primary py-1 bg-info">
-                <div class="col-2 pt-2 text-left">
+                <div class="col-3 pt-2 text-left">
                   <h6>{{book.ISBN}}</h6>
                 </div>
-                <div class="col-5 pt-2 text-left">
+                <div class="col-6 pt-2 text-left">
                   <h6>{{book.title}}</h6>
                 </div>
                 <div class="col-3 pt-2 text-left" v-if="book.authors">
                   <h6>{{book.authors.toString()}}</h6>
-                <div class="col-3 pt-2 text-left">
-                  <h6>{{book.authors}}</h6>
                 </div>
                 <div v-else class="col-3 pt-2 text-left">
                   <h6>No Author Listed</h6>
                 </div>
-                <div class="col-2 text-center">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fas fa-truck"></i>
-                  </button>
-                </div>
+
               </div>
             </router-link>
           </div>
