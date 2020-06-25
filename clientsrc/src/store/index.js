@@ -85,6 +85,16 @@ export default new Vuex.Store({
         total += b.orderQuantity
       })
       state.orderCart.quantity = total
+    },
+    editOrderQuantity(state, book){
+      let foundBook = state.orderCart.books.find(b => b.id == book.book.id)
+      foundBook.orderQuantity -= book.qty
+      console.log("book.qty:")
+      console.log(book.qty)
+      console.log("found book:")
+      console.log(foundBook)
+      console.log("array:")
+      console.log(state.orderCart.books)
     }
   },
   actions: {
@@ -130,14 +140,15 @@ export default new Vuex.Store({
     async addToOrder({ commit, dispatch }, book) {
       commit("addToOrder", book)
     },
-    async removeFromCart({ commit, dispatch }, id) {
-      commit("removeFromCart", id)
-    },
     getOrderCost({commit}){
       commit("getOrderCost")
     },
     getOrderQuantity({commit}){
       commit("getOrderQuantity")
+    },
+    editOrderQuantity({commit}, book){
+      debugger;
+      commit("editOrderQuantity", book)
     }
   }
   //#endregion
