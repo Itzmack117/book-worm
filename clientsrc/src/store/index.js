@@ -36,18 +36,17 @@ export default new Vuex.Store({
     searchBooks(state, books) {
       state.searchResults = books.filter(r => r.volumeInfo.industryIdentifiers).map(r => {
         try {
-
           if (r.volumeInfo.industryIdentifiers[0].identifier) {
             return {
               id: r.id,
-              title: r.volumeInfo.title,
-              subTitle: r.volumeInfo.subtitle,
-              authors: r.volumeInfo.authors,
-              ISBN: r.volumeInfo.industryIdentifiers[0].identifier,
-              pageCount: r.volumeInfo.pageCount,
-              publisher: r.volumeInfo.publisher,
-              description: r.volumeInfo.description,
-              price: r.saleInfo.listPrice,
+              title: r.volumeInfo ? r.volumeInfo.title : "No Title",
+              subTitle: r.volumeInfo ? r.volumeInfo.subtitle : "No Subtitle",
+              authors: r.volumeInfo ? r.volumeInfo.authors : "",
+              ISBN: r.volumeInfo ? r.volumeInfo.industryIdentifiers[0] ? r.volumeInfo.industryIdentifiers[0].identifier : "0" : "1",
+              pageCount: r.volumeInfo ? r.volumeInfo.pageCount : "Unknown",
+              publisher: r.volumeInfo ? r.volumeInfo.publisher : "Unknown",
+              description: r.volumeInfo ? r.volumeInfo.description : "No Description",
+              price: r.saleInfo ? r.volumeInfo.listPrice : "Not for sale",
               quantity: 0,
               orderQuantity: 0,
               img: r.volumeInfo
@@ -58,11 +57,11 @@ export default new Vuex.Store({
           }
         } catch (e) {
           return {
-
           }
         }
       });
     },
+
     addToOrder(state, book) {
       let foundBook = state.orderCart.find(b => b.id == book.id)
       if (foundBook) {
@@ -74,8 +73,8 @@ export default new Vuex.Store({
 
       console.log(state.orderCart)
     },
-    removeFromCart(state, id){
-      let foundBook = state.orderCart.find(b=> b.id==id)
+    removeFromCart(state, id) {
+      let foundBook = state.orderCart.find(b => b.id == id)
       foundBook.orderQuantity = 0;
       state.orderCart = state.orderCart.filter(b => b.id != id)
     },
@@ -123,7 +122,7 @@ export default new Vuex.Store({
     async addToOrder({ commit, dispatch }, book) {
       commit("addToOrder", book)
     },
-    async removeFromCart({commit, dispatch}, id){
+    async removeFromCart({ commit, dispatch }, id) {
       commit("removeFromCart", id)
     }
   }
