@@ -7,15 +7,8 @@
           <h2>Bookworm</h2>
         </span>
       </router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarText"
-        aria-controls="navbarText"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
@@ -29,10 +22,7 @@
             </router-link>
           </li>
           <li class="thefont nav-item" :class="{ active: $route.name == 'bookDetails' }">
-            <router-link
-              class="thefont nav-link text-white"
-              :to="{ name: 'bookDetails' }"
-            >Details Page</router-link>
+            <router-link class="thefont nav-link text-white" :to="{ name: 'bookDetails' }">Details Page</router-link>
           </li>
         </ul>
         <span class="navbar-text">
@@ -50,26 +40,14 @@
           <div class="form-group align-items-center">
             <!-- TODO v-model -->
 
-            <input
-              v-model="searchApi"
-              style="width: 50vw"
-              type="text"
-              name="search"
-              id="search"
-              class="ml-2 form-control"
-              placeholder="search for book"
-              aria-describedby="helpId"
-            />
+            <input v-model="searchApi" style="width: 50vw" type="text" name="search" id="search"
+              class="ml-2 form-control" placeholder="search for book" aria-describedby="helpId" />
           </div>
 
           <button type="submit" class="mx-2 btn btn-outline-primary" @click="searchResults = true">
             <i class="fas fa-search"></i>
           </button>
-          <button
-            @click="searchForm = false; searchResults = false"
-            type="button"
-            class="btn btn-danger"
-          >
+          <button @click="searchForm = false; searchResults = false" type="button" class="btn btn-danger">
             <i class="fas fa-times"></i>
           </button>
         </form>
@@ -106,16 +84,14 @@
                 <div class="col-5 pt-2 text-left">
                   <h6>{{book.title}}</h6>
                 </div>
-                <div class="col-3 pt-2 text-left">
+                <div class="col-3 pt-2 text-left" v-if="book.authors">
                   <h6>{{book.authors.toString()}}</h6>
                 </div>
+                <div v-else class="col-3 pt-2 text-left">
+                  <h6>No Author Listed</h6>
+                </div>
                 <div class="col-2 text-center">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-toggle="modal"
-                    data-target="#exampleModal"
-                  >
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     <i class="fas fa-truck"></i>
                   </button>
                 </div>
@@ -128,14 +104,8 @@
       </div>
     </div>
 
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -147,15 +117,8 @@
           <div class="modal-body">
             <form class="form-inline" style="width: 100%">
               <div class="form-group" style="width: 100%">
-                <input
-                  type="number"
-                  style="width: 75%"
-                  name
-                  id
-                  class="mb-2 form-control"
-                  placeholder="quantity"
-                  aria-describedby="helpId"
-                />
+                <input type="number" style="width: 75%" name id class="mb-2 form-control" placeholder="quantity"
+                  aria-describedby="helpId" />
                 <button type="submit" class="mb-2 ml-5 btn btn-light">Order</button>
               </div>
             </form>
@@ -170,62 +133,62 @@
 </template>
 
 <script>
-import apiResults from "../components/apiResults";
-const googleApi = axios.create({
-  baseURL: "https://www.googleapis.com/books/v1/volumes?q=",
-  timeout: 3000
-});
-import axios from "axios";
+  import apiResults from "../components/apiResults";
+  const googleApi = axios.create({
+    baseURL: "https://www.googleapis.com/books/v1/volumes?q=",
+    timeout: 3000
+  });
+  import axios from "axios";
 
-let _api = axios.create({
-  baseURL: "https://localhost:3000",
-  withCredentials: true
-});
-export default {
-  name: "Navbar",
-  components: {
-    apiResults
-  },
-  data() {
-    return {
-      searchForm: false,
-      searchResults: false,
-      searchApi: ""
-    };
-  },
-  computed: {
-    books() {
-      return this.$store.state.searchResults;
-    }
-  },
-  methods: {
-    async login() {
-      await this.$auth.loginWithPopup();
-      this.$store.dispatch("setBearer", this.$auth.bearer);
-      this.$store.dispatch("getProfile");
-      console.log("this.$auth.user: ");
-      console.log(this.$auth.user);
+  let _api = axios.create({
+    baseURL: "https://localhost:3000",
+    withCredentials: true
+  });
+  export default {
+    name: "Navbar",
+    components: {
+      apiResults
     },
-    async logout() {
-      await this.$auth.logout({ returnTo: window.location.origin });
+    data() {
+      return {
+        searchForm: false,
+        searchResults: false,
+        searchApi: ""
+      };
     },
-    async searchBooks() {
-      this.results = [];
-      this.$store.dispatch("searchBooks", this.searchApi);
-      this.results = this.$store.state.searchResults;
+    computed: {
+      books() {
+        return this.$store.state.searchResults;
+      }
+    },
+    methods: {
+      async login() {
+        await this.$auth.loginWithPopup();
+        this.$store.dispatch("setBearer", this.$auth.bearer);
+        this.$store.dispatch("getProfile");
+        console.log("this.$auth.user: ");
+        console.log(this.$auth.user);
+      },
+      async logout() {
+        await this.$auth.logout({ returnTo: window.location.origin });
+      },
+      async searchBooks() {
+        this.results = [];
+        this.$store.dispatch("searchBooks", this.searchApi);
+        this.results = this.$store.state.searchResults;
+      }
     }
-  }
-};
+  };
 </script>
 
 <style scoped>
-.thefont {
-  font-family: "Indie Flower", cursive;
-}
+  .thefont {
+    font-family: "Indie Flower", cursive;
+  }
 
-#results {
-  max-height: 20vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
+  #results {
+    max-height: 20vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 </style>
