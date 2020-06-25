@@ -85,7 +85,7 @@
                      </router-link>
                   </div>
                   <div class="col-1 pt-2 text-center">
-                    <i class="fas fa-trash-alt text-danger pointer" @click=" removeItemForm = true"></i> <!--removeFromCart(book.id);-->
+                    <i class="fas fa-trash-alt text-danger pointer" @click=" removeItemForm = true"></i>
                   </div>
                 </div>
              
@@ -117,10 +117,10 @@
           <h5>TOTAL</h5>
         </div>
         <div class="col-4 pt-2 bg-info text-right border-bottom border-right border-dark border-left">
-          <h5>2222222</h5>
+          <h5>total quantity</h5>
         </div>
         <div class="col-4 pt-2 bg-info text-right border-bottom border-right border-dark">
-          <h5>8306623863</h5>
+          <h5>total cost</h5>
         </div>
         </div>
       </div>

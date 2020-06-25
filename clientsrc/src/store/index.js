@@ -46,7 +46,7 @@ export default new Vuex.Store({
               pageCount: r.volumeInfo ? r.volumeInfo.pageCount : "Unknown",
               publisher: r.volumeInfo ? r.volumeInfo.publisher : "Unknown",
               description: r.volumeInfo ? r.volumeInfo.description : "No Description",
-              price: r.saleInfo ? r.volumeInfo.listPrice : "Not for sale",
+              price: r.saleInfo ? r.saleInfo.listPrice : "Not for sale",
               quantity: 0,
               orderQuantity: 0,
               img: r.volumeInfo
