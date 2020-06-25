@@ -21,7 +21,7 @@ export class BooksController extends BaseController {
 
     async getAll(req, res, next) {
         try {
-            let data = await booksService.getAll(req.userInfo.email)
+            let data = await booksService.getAll()
             return res.send(data)
         } catch (error) {
             next(error)

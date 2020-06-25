@@ -25,6 +25,7 @@ export default new Vuex.Store({
     searchResults: [],
     activeBook: {},
     orderCart: {quantity: 0, cost: 0, books: []},
+    books: []
   },
   mutations: {
     setUser(state, user) {
@@ -61,7 +62,6 @@ export default new Vuex.Store({
         }
       });
     },
-
     addToOrder(state, book) {
       let foundBook = state.orderCart.books.find(b => b.id == book.id)
       if (foundBook) {
@@ -71,7 +71,6 @@ export default new Vuex.Store({
         state.orderCart.books.push(book)
       }
     },
-
     getOrderCost(state){
       let total = 0
       let books = state.orderCart.books.forEach(b => {
@@ -95,6 +94,10 @@ export default new Vuex.Store({
       console.log(foundBook)
       console.log("array:")
       console.log(state.orderCart.books)
+    },
+    setBooks(state, data) {
+      state.books = data
+      console.log(state.books)
     }
   },
   actions: {
@@ -121,7 +124,6 @@ export default new Vuex.Store({
         console.error(err)
       }
     },
-
     async deleteFromServer({ commit, dispatch }, books) {
       let res = await _api.delete("")
       dispatch("postToServer", books)
@@ -133,12 +135,10 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
-     
     },
     async getFromServer({ commit, dispatch }) {
       let res = await _api.get("/results")
     },
-
     async getActiveBook({ commit, dispatch }, id) {
       commit("setActiveBook", id)
     },
@@ -153,6 +153,15 @@ export default new Vuex.Store({
     },
     editOrderQuantity({commit}, book){
       commit("editOrderQuantity", book)
+    },
+    async getBooks({commit, dispatch }) {
+      try{
+        let res = await _api.get("books")
+        commit("setBooks", res.data)
+      }
+      catch(error) {
+        console.error(error)
+      }
     }
   }
   //#endregion

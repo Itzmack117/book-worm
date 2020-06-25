@@ -79,9 +79,16 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    books() {
+      return this.$store.state.books
+    }
+  },
   methods: {},
-  components: {}
+  components: {},
+  mounted() {
+    this.$store.dispatch("getBooks")
+  }
 };
 </script>
 

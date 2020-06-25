@@ -4,8 +4,8 @@ import { BadRequest } from "../utils/Errors"
 
 class BookService {
 
-  async getAll(query = {}) {
-    let data = await dbContext.Books.find(query)
+  async getAll() {
+    let data = await dbContext.Books.find()
     return data
   }
 
