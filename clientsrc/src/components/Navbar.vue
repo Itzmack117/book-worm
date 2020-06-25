@@ -84,8 +84,13 @@
                 <div class="col-5 pt-2 text-left">
                   <h6>{{book.title}}</h6>
                 </div>
+                <div class="col-3 pt-2 text-left" v-if="book.authors">
+                  <h6>{{book.authors.toString()}}</h6>
                 <div class="col-3 pt-2 text-left">
                   <h6>{{book.authors}}</h6>
+                </div>
+                <div v-else class="col-3 pt-2 text-left">
+                  <h6>No Author Listed</h6>
                 </div>
                 <div class="col-2 text-center">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
