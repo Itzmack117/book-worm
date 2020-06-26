@@ -13,16 +13,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-          <li class="thefont nav-item text-white" :class="{ active: $route.name == 'inventory' }">
+          <li class="nav-item text-white" :class="{ active: $route.name == 'inventory' }">
             <router-link :to="{ name: 'inventory' }" class="text-white nav-link">Inventory</router-link>
           </li>
-          <li class="pl-3 thefont nav-item text-white" :class="{ active: $route.name == 'order' }">
+          <li class="pl-3 nav-item text-white" :class="{ active: $route.name == 'order' }">
             <router-link :to="{ name: 'order' }" class="text-white nav-link">
               My Order
             </router-link>
           </li>
-          <li class="thefont nav-item" :class="{ active: $route.name == 'bookDetails' }">
-            <router-link class="thefont nav-link text-white" :to="{ name: 'bookDetails' }">Details Page</router-link>
+          <li class="nav-item" :class="{ active: $route.name == 'bookDetails' }">
+            <router-link class="nav-link text-white" :to="{ name: 'bookDetails' }">Details Page</router-link>
           </li>
         </ul>
         <span class="navbar-text">
