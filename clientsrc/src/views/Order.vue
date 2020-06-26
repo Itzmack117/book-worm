@@ -183,6 +183,7 @@ export default {
       // this.$store.dispatch("getCart")
       this.$store.dispatch("getOrderQuantity")
       this.$store.dispatch("getOrderCost")
+      this.$store.dispatch("getBooks")
       
     },
     methods: {
@@ -206,11 +207,19 @@ export default {
       },
 
       confirmOrder(){
+        this.$store.dispatch("getBooks")
         this.cart.forEach(book => {
-          let found = this.inventory.find(b => b.id == book.id)
+          let found = this.inventory.find(b => b.ISBN == book.ISBN)
+          debugger;
+            console.log("found:")
+            console.log(found)
           if(found){
-            found.qty += book.orderQuantity;
-            found.orderQuantity -= book.orderQuantity
+            found.quantity += book.orderQuantity;
+            console.log("found qty")
+            console.log(found.quantity)
+            found.quantity.toFixed(0)
+            found.orderQuantity = 0
+            book.orderQuantity = 0
             this.$store.dispatch("updateInventoryQty", found) }
             else {
               this.$store.dispatch("addToInventory", book)    

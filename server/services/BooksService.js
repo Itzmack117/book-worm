@@ -30,8 +30,8 @@ class BookService {
     return data;
   }
 
-  async delete(id, userEmail) {
-    let data = await dbContext.Books.findOneAndRemove({ id, creatorEmail: userEmail });
+  async delete(id) {
+    let data = await dbContext.Books.findOneAndRemove( id );
     if (!data) {
       throw new BadRequest("Invalid Id or you are not the owner")
     }

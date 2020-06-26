@@ -53,7 +53,7 @@ export class BooksController extends BaseController {
 
     async delete(req, res, next) {
         try {
-            await booksService.delete(req.params.id, req.userInfo.email)
+            await booksService.delete(req.params.id)
             return res.send("Successfully deleted")
         } catch (error) { next(error) }
     }
