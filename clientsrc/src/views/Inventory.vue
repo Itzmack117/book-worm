@@ -24,7 +24,7 @@
       </div>
     </div> 
 
-      <div class="row border-bottom border-dark bg-info" v-for="book in books" :key="book" :bookProp="book">
+      <div class="row border-bottom border-dark bg-info" v-for="book in books" :key="book.id" :bookProp="book">
       <div class="col-3 pt-2 text-left border-right border-dark">
         <p>{{book.ISBN}}</p>
       </div>
