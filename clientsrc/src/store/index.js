@@ -172,6 +172,15 @@ export default new Vuex.Store({
 
     clearOrder({commit}){
       commit("clearOrder")
+    },
+    
+ async updateInventory({commit}, book){
+      try {
+        debugger
+        let res = await _api.put("/books" + book.id, book)
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
   //#endregion

@@ -174,6 +174,9 @@ export default {
       },
       cost(){
         return this.$store.state.orderCart.cost
+      },
+      inventory(){
+        return this.$store.state.books
       }
     },
     mounted(){
@@ -204,7 +207,14 @@ export default {
 
       confirmOrder(){
         this.cart.forEach(book => {
-          this.$store.dispatch("addToInventory", book)
+          let found = this.inventory.find(b => b.id == book.id)
+          if(found){
+            found.qty += book.orderQuantity;
+            found.orderQuantity -= book.orderQuantity
+            this.$store.dispatch("updateInventoryQty", found) }
+            else {
+              this.$store.dispatch("addToInventory", book)    
+            } 
         });
         this.$store.dispatch("clearOrder")
          $("#confirmModal").modal("hide");
