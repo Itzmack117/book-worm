@@ -74,8 +74,25 @@
             {{ book.title }}
           </router-link>-->
           <div v-for="book in books" :key="book.id" :bookProp="book">
-            <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
+            <router-link v-if="book.price>0" :to="{name: 'bookDetails', params: {bookId: book.id}}">
               <div class="apiResults row border-bottom border-primary py-1 bg-info">
+                <div class="col-3 pt-2 text-left">
+                  <h6>{{book.ISBN}}</h6>
+                </div>
+                <div class="col-6 pt-2 text-left">
+                  <h6>{{book.title}}</h6>
+                </div>
+                <div class="col-3 pt-2 text-left" v-if="book.authors">
+                  <h6>{{book.authors.toString()}}</h6>
+                </div>
+                <div v-else class="col-3 pt-2 text-left">
+                  <h6>No Author Listed</h6>
+                </div>
+
+              </div>
+            </router-link>
+            <router-link v-else :to="{name: 'bookDetails', params: {bookId: book.id}}">
+              <div class="apiResults row border-bottom border-primary py-1 bg-info text-danger">
                 <div class="col-3 pt-2 text-left">
                   <h6>{{book.ISBN}}</h6>
                 </div>
