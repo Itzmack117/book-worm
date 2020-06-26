@@ -44,7 +44,7 @@
         <h5 v-else>Not for sale</h5>
       </div>
       <div class="col-3 py-2 text-right">
-        <h5 v-if="book.price">{{book.price * book.quantity}}</h5>
+        <h5 v-if="book.price">{{(book.price * book.quantity).toFixed(2)}}</h5>
         <h5 v-else>----</h5>
       </div>
     </div>

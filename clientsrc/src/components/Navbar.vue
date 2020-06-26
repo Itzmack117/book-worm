@@ -18,7 +18,7 @@
           </li>
           <li class="pl-3 thefont nav-item text-white" :class="{ active: $route.name == 'order' }">
             <router-link :to="{ name: 'order' }" class="text-white nav-link">
-              <h4>My Order</h4>
+              My Order
             </router-link>
           </li>
           <li class="thefont nav-item" :class="{ active: $route.name == 'bookDetails' }">
