@@ -98,6 +98,10 @@ export default new Vuex.Store({
     setBooks(state, data) {
       state.books = data
       console.log(state.books)
+    },
+    clearOrder(state){
+      state.orderCart.quantity = 0
+      state.orderCart.cost = 0
     }
   },
   actions: {
@@ -164,6 +168,10 @@ export default new Vuex.Store({
       catch(error) {
         console.error(error)
       }
+    },
+
+    clearOrder({commit}){
+      commit("clearOrder")
     }
   }
   //#endregion

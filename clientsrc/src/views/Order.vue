@@ -126,7 +126,30 @@
       </div>
     </div>
 
-    <button type="button" class=" mt-3 mb-3 btn btn-primary float-right" @click="confirmOrder">CONFIRM ORDER</button>
+    <button type="button" class=" mt-3 mb-3 btn btn-primary float-right" data-toggle="modal"
+          data-target="#confirmModal">CONFIRM ORDER</button>
+<div class="modal" tabindex="-1" role="dialog" id="confirmModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Would you like to add these books to your inventory?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" @click="confirmOrder">Submit Order</button> <!-- Make the submimt button close the modal too -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
   </div>
@@ -183,6 +206,8 @@ export default {
         this.cart.forEach(book => {
           this.$store.dispatch("addToInventory", book)
         });
+        this.$store.dispatch("clearOrder")
+         $("#confirmModal").modal("hide");
       }
     }
   }
