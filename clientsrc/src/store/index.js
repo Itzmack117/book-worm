@@ -42,7 +42,7 @@ export default new Vuex.Store({
               id: r.id,
               title: r.volumeInfo ? r.volumeInfo.title : "No Title",
               subTitle: r.volumeInfo ? r.volumeInfo.subtitle : "No Subtitle",
-              authors: r.volumeInfo ? r.volumeInfo.authors ? r.volumeInfo.authors.toString() : "" : "",
+              authors: r.volumeInfo ? r.volumeInfo.authors ? r.volumeInfo.authors.toString() : " " : " ",
               ISBN: r.volumeInfo ? r.volumeInfo.industryIdentifiers[0] ? r.volumeInfo.industryIdentifiers[0].identifier : "0" : "1",
               pageCount: r.volumeInfo ? r.volumeInfo.pageCount : "Unknown",
               publisher: r.volumeInfo ? r.volumeInfo.publisher : "Unknown",
@@ -131,6 +131,8 @@ export default new Vuex.Store({
     async addToInventory({ commit, dispatch }, book) {
       try {
         console.log(book)
+        book.quantity += book.orderQuantity
+        book.orderQuantity -= book.orderQuantity
         let res = await _api.post("/books", book)
       } catch (error) {
         console.error(error)
