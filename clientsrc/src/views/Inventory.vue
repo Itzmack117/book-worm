@@ -1,12 +1,17 @@
 <template>
   <div class="inventory container">
-    <div class="row mt-5">
-      <div class="col-6 shadow mx-auto bg-secondary border border-primary text-primary rounded-pill">
+    <div class="row mt-5 mb-0">
+      <div class="col-6 mx-auto bg-secondary text-primary">
         <h3 class="pt-1">Books On Hand</h3>
+        <div class="row">
+          <div class="col-8 mx-auto border-bottom border-dark">
+
+          </div>
+        </div>
       </div>
     </div>
 
-  <div class="row mt-3">
+  <div class="row mt-2">
     <div class="col-12 shadow">
     
     <div class="row border-bottom border-dark bg-gradient-primary text-white">
