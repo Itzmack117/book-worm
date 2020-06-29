@@ -49,6 +49,7 @@ export default new Vuex.Store({
               description: r.volumeInfo ? r.volumeInfo.description : "No Description",
               price: r.saleInfo ? r.saleInfo.listPrice ? r.saleInfo.listPrice.amount : 0 : 0,
               quantity: 0,
+              saleQuantity: 0,
               orderQuantity: 0,
               img: r.volumeInfo
                 ? r.volumeInfo.imageLinks
@@ -176,12 +177,23 @@ export default new Vuex.Store({
     
  async updateInventoryQty({commit}, book){
       try {
-        debugger
         let res = await _api.put("books/" + book.id, book)
       } catch (error) {
         console.error(error)
       }
+    },
+  
+async addToInvoice({commit, dispatch}, book){
+    book.book.saleQuantity += book.quantity
+    book.quantity = 0
+    try {
+      let res = await _api.put("books/" + book.book.id, book.book)
+      dispatch("getBooks")
+    } catch (error) {
+      console.error(error)
     }
+}
+  
   }
   //#endregion
 })

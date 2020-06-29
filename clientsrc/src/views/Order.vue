@@ -215,7 +215,6 @@ export default {
         this.$store.dispatch("getBooks")
         this.cart.forEach(book => {
           let found = this.inventory.find(b => b.ISBN == book.ISBN)
-          debugger;
             console.log("found:")
             console.log(found)
           if(found){
