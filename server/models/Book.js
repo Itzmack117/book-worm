@@ -13,6 +13,7 @@ const Book = new Schema({
   description: { type: String, required: true },
   quantity: { type: Number },
   orderQuantity: {type: Number},
+  saleQuantity: {type: Number},
   img: {type: String},
   price: {type: Number}
 }, { timestamps: true, toJSON: { virtuals: true } })

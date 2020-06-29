@@ -25,7 +25,7 @@
                       <div class="row">
                         <div class="col-12 mx-auto">
                           <button class="btn btn-outline-primary" type="submit">Sell</button>
-                          <button class="btn btn-outline-primary" @click="saleQuantity = 0; invoiceForm = false">Cancel</button>
+                          <button class="btn btn-outline-primary" type="button" @click="saleQuantity = 0; invoiceForm = false">Cancel</button>
                         </div>
                       </div>
                     </form>
@@ -100,6 +100,8 @@ export default {
 
     addToInvoice(){
       let editedBook = {quantity: this.saleQuantity, book: this.bookToSell}
+      console.log("editedBook:")
+      console.log(editedBook)
       if (this.bookToSell.quantity >= this.saleQuantity){
         this.$store.dispatch("addToInvoice", editedBook)
       }

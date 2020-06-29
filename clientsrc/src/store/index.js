@@ -184,8 +184,8 @@ export default new Vuex.Store({
     },
   
 async addToInvoice({commit, dispatch}, book){
-    book.book.saleQuantity += book.quantity
-    book.quantity = 0
+    book.book.saleQuantity = book.quantity
+    // book.quantity = 0
     try {
       let res = await _api.put("books/" + book.book.id, book.book)
       dispatch("getBooks")
