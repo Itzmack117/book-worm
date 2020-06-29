@@ -99,6 +99,7 @@ export default {
     },
 
     addToInvoice(){
+      
       let editedBook = {quantity: this.saleQuantity, book: this.bookToSell}
       console.log("editedBook:")
       console.log(editedBook)

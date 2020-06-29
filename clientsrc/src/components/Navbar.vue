@@ -21,6 +21,11 @@
               My Order
             </router-link>
           </li>
+                    <li class="pl-3 thefont nav-item text-white" :class="{ active: $route.name == 'invoice' }">
+            <router-link :to="{ name: 'invoice' }" class="text-white nav-link">
+              Invoice
+            </router-link>
+          </li>
         </ul>
         <span class="navbar-text">
           <button class="btn btn-info" @click="searchForm = true">Search</button>

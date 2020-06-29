@@ -6,6 +6,8 @@ import BookDetails from '../views/BookDetails.vue'
 import Inventory from "../views/Inventory.vue"
 //@ts-ignore
 import Order from '../views/Order.vue'
+// @ts-ignore
+import Invoice from '../views/Invoice.vue'
 import { authGuard } from "@bcwdev/auth0-vue"
 import VueRouter from "vue-router"
 
@@ -31,6 +33,11 @@ export default new Router({
       path: '/order',
       name: 'order',
       component: Order,
+    },
+    {
+      path: '/invoice',
+      name: 'invoice',
+      component: Invoice,
     },
 
     {

@@ -25,6 +25,7 @@ export default new Vuex.Store({
     searchResults: [],
     activeBook: {},
     orderCart: {quantity: 0, cost: 0, books: []},
+    invoice: {books: [], quantity: 0, cost: 0},
     books: []
   },
   mutations: {
@@ -72,6 +73,18 @@ export default new Vuex.Store({
         state.orderCart.books.push(book)
       }
     },
+    addToInvoice(state,book){
+      debugger;
+      console.log("invoice:")
+      console.log(state.invoice)
+      let foundBook = state.invoice.books.find(b => b.id == book.id)
+      if(foundBook){
+        foundBook.saleQuantity += book.saleQuantity
+        foundBook.saleQuantity /= 2
+      } else {
+        state.invoice.books.push(book)
+      }
+    },
     getOrderCost(state){
       let total = 0
       let books = state.orderCart.books.forEach(b => {
@@ -89,20 +102,36 @@ export default new Vuex.Store({
     editOrderQuantity(state, book){
       let foundBook = state.orderCart.books.find(b => b.id == book.book.id)
       foundBook.orderQuantity -= book.qty
-      console.log("book.qty:")
-      console.log(book.qty)
-      console.log("found book:")
-      console.log(foundBook)
-      console.log("array:")
-      console.log(state.orderCart.books)
+    },
+    getSaleCost(state){
+      let total = 0
+      let books = state.invoice.books.forEach(b => {
+        total += (b.price * b.saleQuantity)
+      })
+      state.invoice.cost = total
+    },
+    getSaleQuantity(state){
+      let total = 0
+      let books = state.invoice.books.forEach(b => {
+        total += b.saleQuantity
+      })
+      state.invoice.quantity = total
+    },
+    editSaleQuantity(state, book){
+      let foundBook = state.invoice.books.find(b => b.id == book.book.id)
+      foundBook.saleQuantity -= book.qty
     },
     setBooks(state, data) {
       state.books = data
-      console.log(state.books)
     },
     clearOrder(state){
       state.orderCart.quantity = 0
       state.orderCart.cost = 0
+    },
+    clearSale(state){
+      state.invoice.quantity = 0
+      state.invoice.cost = 0
+      state.invoice.books = []
     }
   },
   actions: {
@@ -152,6 +181,9 @@ export default new Vuex.Store({
     async addToOrder({ commit, dispatch }, book) {
       commit("addToOrder", book)
     },
+    // addToInvoice({commit}, book){
+    //   commit("addToInvoice", book)
+    // },
     getOrderCost({commit}){
       commit("getOrderCost")
     },
@@ -161,6 +193,20 @@ export default new Vuex.Store({
     editOrderQuantity({commit}, book){
       commit("editOrderQuantity", book)
     },
+
+    getSaleCost({commit}){
+      commit("getSaleCost")
+    },
+    getSaleQuantity({commit}){
+      commit("getSaleQuantity")
+    },
+    editSaleQuantity({commit}, book){
+      commit("editSaleQuantity", book)
+    },
+
+
+
+
     async getBooks({commit, dispatch }) {
       try{
         let res = await _api.get("books")
@@ -183,12 +229,13 @@ export default new Vuex.Store({
       }
     },
   
-async addToInvoice({commit, dispatch}, book){
+    async addToInvoice({commit, dispatch}, book){
     book.book.saleQuantity = book.quantity
     // book.quantity = 0
     try {
       let res = await _api.put("books/" + book.book.id, book.book)
       dispatch("getBooks")
+      commit("addToInvoice", book.book)
     } catch (error) {
       console.error(error)
     }
