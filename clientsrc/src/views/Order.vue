@@ -1,12 +1,17 @@
 <template>
   <div class="order container">
-    <div class="row">
-      <div class="col-6 col-md-3 mx-auto mt-5 rounded-pill shadow border border-primary text-center text-primary">
-        <h3>Order</h3>
+   <div class="row mt-5 mb-0">
+      <div class="col-6 mx-auto bg-secondary text-primary">
+        <h3 class="pt-1">Order</h3>
+        <div class="row">
+          <div class="col-8 mx-auto border-bottom border-dark">
+
+          </div>
+        </div>
       </div>
     </div>
     
-    <div class="row mt-3">
+    <div class="row mt-2">
       <div class="col-12 shadow">
                 <div class="row bg-gradient-light py-2" v-if="removeItemForm">
                   <div class="col mx-auto">

@@ -21,9 +21,6 @@
               My Order
             </router-link>
           </li>
-          <li class="thefont nav-item" :class="{ active: $route.name == 'bookDetails' }">
-            <router-link class="thefont nav-link text-white" :to="{ name: 'bookDetails' }">Details Page</router-link>
-          </li>
         </ul>
         <span class="navbar-text">
           <button class="btn btn-info" @click="searchForm = true">Search</button>
