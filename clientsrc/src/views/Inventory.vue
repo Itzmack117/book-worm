@@ -57,16 +57,24 @@
         <div class="col-12">
           <div class="row" v-if="book.quantity > 0">
       <div class="col-3 pt-2 text-left border-right border-dark">
+         <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
         <p>{{book.ISBN}}</p>
+         </router-link>
       </div>
       <div class="col-5 pt-2 border-right border-dark text-left">
+         <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
         <p>{{book.title}}</p>
+         </router-link>
       </div>
       <div class="col-2 pt-2 text-right border-right border-dark">
+         <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
         <p>{{book.quantity}}</p>
+         </router-link>
       </div>
       <div class="col-1 pt-2 text-right border-right border-dark">
+         <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
         <p>{{book.price}}</p>
+         </router-link>
       </div>
        <div class="col-1 pt-2 text-center">
         <i class="fas fa-shopping-cart text-primary" @click="invoiceForm = true; setToSale(book)"></i>
