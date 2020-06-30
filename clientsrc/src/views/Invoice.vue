@@ -2,7 +2,7 @@
   <div class="invoice container">
     <div class="row mt-5 mb-0">
       <div class="col-6 mx-auto bg-secondary text-primary">
-        <h1 class="pt-1">Dicks out For Harambe</h1>
+        <h3 class="pt-1">Invoice</h3>
         <div class="row">
           <div class="col-8 mx-auto border-bottom border-dark">
 
