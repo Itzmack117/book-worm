@@ -33,7 +33,16 @@ export default new Vuex.Store({
       state.user = user
     },
     setActiveBook(state, id) {
-      state.activeBook = state.searchResults.filter(b => b.id == id).pop()
+      let found = state.searchResults.filter(b => b.id == id).pop()
+      if(found){
+        state.activeBook = found
+      } else {
+        let found2 = state.books.filter(b=>b.id==id).pop()
+        state.activeBook = found2
+      }
+
+    },
+    setActiveFromInventory(state, id){
     },
     searchBooks(state, books) {
       state.searchResults = books.filter(r => r.volumeInfo.industryIdentifiers).map(r => {
