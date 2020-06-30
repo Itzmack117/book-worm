@@ -220,7 +220,10 @@ export default new Vuex.Store({
     clearOrder({commit}){
       commit("clearOrder")
     },
-    
+
+    clearSale({commit}){
+      commit("clearSale")
+    },
  async updateInventoryQty({commit}, book){
       try {
         let res = await _api.put("books/" + book.id, book)

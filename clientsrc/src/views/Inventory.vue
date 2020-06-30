@@ -54,6 +54,8 @@
     </div> 
 
       <div class="row border-bottom border-dark bg-info" v-for="book in books" :key="book.id" :bookProp="book">
+        <div class="col-12">
+          <div class="row" v-if="book.quantity > 0">
       <div class="col-3 pt-2 text-left border-right border-dark">
         <p>{{book.ISBN}}</p>
       </div>
@@ -69,6 +71,8 @@
        <div class="col-1 pt-2 text-center">
         <i class="fas fa-shopping-cart text-primary" @click="invoiceForm = true; setToSale(book)"></i>
       </div>
+          </div>
+        </div>
     </div>
      </div>
   </div>     

@@ -210,7 +210,7 @@ export default {
           this.$store.dispatch("updateInventoryQty", found)
         }
       });
-      this.$store.dispatch("clearInvoice");
+      this.$store.dispatch("clearSale");
       $("#confirmModal").modal("hide");
     }
   }
