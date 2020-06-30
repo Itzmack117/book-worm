@@ -117,6 +117,8 @@ export default {
       if (this.bookToSell.quantity >= this.saleQuantity){
         this.$store.dispatch("addToInvoice", editedBook)
       }
+      this.invoiceForm = false
+      this.bookToSell = {};
       // this.$store.dispatch("getInvoiceQuantity")
       // this.$store.dispatch("getInvoiceCost")
     },

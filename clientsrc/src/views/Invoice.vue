@@ -22,9 +22,9 @@
               </div>
               <div class="row">
                 <div class="col-12 mx-auto">
-                  <button class="btn btn-outline-danger ml-1">Remove All</button>
+                  
                   <button class="btn btn-outline-primary" type="submit">Remove</button>
-                  <button class="btn btn-outline-primary" type="button" @click="this.bookToDelete = {}; removeItemForm = false">Cancel</button>
+                  <button class="btn btn-outline-primary" type="button" @click="removeItemForm = false">Cancel</button>
                 </div>
               </div>
             </form>
@@ -141,11 +141,11 @@
             </button>
           </div>
           <div class="modal-body">
-            <h1><i class="fas fa-fire"></i>u wanna sell these bad bois ? <i class="fas fa-fire"></i></h1>
+            <p>Would You Like To Confirm This Sale?</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" @click="confirmSale">Submit Sale</button>
+            <button type="button" class="btn btn-primary" @click="confirmSale">Confirm Sale</button>
             <!-- Make the submimt button close the modal too -->
           </div>
         </div>
@@ -196,6 +196,8 @@ export default {
       }
       this.$store.dispatch("getSaleQuantity")
       this.$store.dispatch("getSaleCost")
+      this.bookToDelete={};
+      this.removeItemForm = false;
     },
     setForRemove(book){
       this.bookToDelete = this.invoice.find(b => b.id == book.id);

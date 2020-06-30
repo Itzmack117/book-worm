@@ -28,7 +28,6 @@
               </div>
               <div class="row">
                 <div class="col-12 mx-auto">
-                  <button class="btn btn-outline-danger ml-1">Remove All</button>
                   <button class="btn btn-outline-primary" type="submit">Remove</button>
                   <button
                     class="btn btn-outline-primary"
