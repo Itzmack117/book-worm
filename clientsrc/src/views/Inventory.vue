@@ -113,8 +113,7 @@ export default {
     addToInvoice(){
       
       let editedBook = {quantity: this.saleQuantity, book: this.bookToSell}
-      console.log("editedBook:")
-      console.log(editedBook)
+
       if (this.bookToSell.quantity >= this.saleQuantity){
         this.$store.dispatch("addToInvoice", editedBook)
       }

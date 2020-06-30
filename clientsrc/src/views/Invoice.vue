@@ -179,22 +179,17 @@ export default {
     }
   },
   mounted(){
-    console.log(this.$store.state.invoice)
     this.$store.dispatch("getSaleQuantity")
     this.$store.dispatch("getSaleCost")
     this.$store.dispatch("getBooks")
   },
   methods: {
-    test(){
-      console.log("this.bookToDelete")
-      console.log(this.bookToDelete)
-    },
+
     editSaleQuantity(){
       let editedBook = {
         quantity: this.removeQuantity,
         book: this.bookToDelete
       };
-        debugger
       if(this.bookToDelete.saleQuantity >= this.removeQuantity){
         editedBook.book.saleQuantity -= this.removeQuantity
         this.$store.dispatch("updateInventoryQty", editedBook.book)
@@ -204,7 +199,6 @@ export default {
     },
     setForRemove(book){
       this.bookToDelete = this.invoice.find(b => b.id == book.id);
-      console.log(this.bookToDelete)
     },
     confirmSale(){
       this.$store.dispatch("getBooks");

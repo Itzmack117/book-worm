@@ -167,7 +167,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getActiveBook", this.$route.params.bookId);
-    console.log(this.$store.state.activeBook);
   },
   computed: {
     book() {
@@ -176,13 +175,11 @@ export default {
   },
   methods: {
     addToOrder() {
-
       this.book.orderQuantity += this.orderQ
       this.$store.dispatch("addToOrder",
        this.book,
       );
       $("#orderModal").modal("hide");
-      console.log(this.book);
     }
   },
   components: {}

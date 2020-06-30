@@ -83,9 +83,6 @@ export default new Vuex.Store({
       }
     },
     addToInvoice(state,book){
-      debugger;
-      console.log("invoice:")
-      console.log(state.invoice)
       let foundBook = state.invoice.books.find(b => b.id == book.id)
       if(foundBook){
         foundBook.saleQuantity += book.saleQuantity
@@ -173,7 +170,6 @@ export default new Vuex.Store({
     },
     async addToInventory({ commit, dispatch }, book) {
       try {
-        console.log(book)
         book.quantity += book.orderQuantity
         book.orderQuantity -= book.orderQuantity
         let res = await _api.post("/books", book)
