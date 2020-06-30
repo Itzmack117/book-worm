@@ -17,13 +17,14 @@
           <div class="col mx-auto">
             <form class="form-inline" @submit.prevent="editSaleQuantity">
               <div class="form-group">
+                <h4 class="mr-5 mt-2">{{this.bookToDelete.title}}</h4>
                 <input min="0" type="number" class="form-control" placeholder="Remove How Many?" v-model.number="removeQuantity">
               </div>
               <div class="row">
                 <div class="col-12 mx-auto">
                   <button class="btn btn-outline-danger ml-1">Remove All</button>
                   <button class="btn btn-outline-primary" type="submit">Remove</button>
-                  <button class="btn btn-outline-primary" type="button" @click="bookToDelete = {}; removeItemForm = false">Cancel</button>
+                  <button class="btn btn-outline-primary" type="button" @click="this.bookToDelete = {}; removeItemForm = false">Cancel</button>
                 </div>
               </div>
             </form>
@@ -85,7 +86,7 @@
                      </router-link>
                   </div>
                   <div class="col-1 pt-2 text-center">
-                    <i class="fas fa-trash-alt text-danger pointer" @click="removeItemForm = true; this.bookToDelete = book"></i>
+                    <i class="fas fa-trash-alt text-danger pointer" @click="removeItemForm= true; setForRemove(book)"></i>
                   </div>
               </div>
             </div>
@@ -184,21 +185,26 @@ export default {
     this.$store.dispatch("getBooks")
   },
   methods: {
+    test(){
+      console.log("this.bookToDelete")
+      console.log(this.bookToDelete)
+    },
     editSaleQuantity(){
       let editedBook = {
         quantity: this.removeQuantity,
         book: this.bookToDelete
       };
-      debugger
+        debugger
       if(this.bookToDelete.saleQuantity >= this.removeQuantity){
-        editedBook.saleQuantity -= this.removeQuantity
-        this.$store.dispatch("editSale", editedBook)
+        editedBook.book.saleQuantity -= this.removeQuantity
+        this.$store.dispatch("updateInventoryQty", editedBook.book)
       }
       this.$store.dispatch("getSaleQuantity")
       this.$store.dispatch("getSaleCost")
     },
     setForRemove(book){
       this.bookToDelete = this.invoice.find(b => b.id == book.id);
+      console.log(this.bookToDelete)
     },
     confirmSale(){
       this.$store.dispatch("getBooks");
