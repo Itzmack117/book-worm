@@ -18,7 +18,7 @@
                   <div class="col mx-auto">
                     <form class="form-inline" @submit.prevent="addToInvoice">
                       <div class="form-group">
-                        
+                        <h4 class="mr-5 mt-2">{{this.bookToSell.title}}</h4>
                         <input min="0"  type="number" name="" id="" class="form-control" placeholder="Sell How Many?" aria-describedby="helpId" v-model.number="saleQuantity">
                         
                       </div>

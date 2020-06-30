@@ -17,7 +17,7 @@
           <div class="col mx-auto">
             <form class="form-inline" @submit.prevent="editSaleQuantity">
               <div class="form-group">
-                <input min="0" type="number" class="form-control" placeholder="Remove How Many?">
+                <input min="0" type="number" class="form-control" placeholder="Remove How Many?" v-model.number="removeQuantity">
               </div>
               <div class="row">
                 <div class="col-12 mx-auto">
@@ -85,7 +85,7 @@
                      </router-link>
                   </div>
                   <div class="col-1 pt-2 text-center">
-                    <i class="fas fa-trash-alt text-danger pointer" @click="removeItemForm = true"></i>
+                    <i class="fas fa-trash-alt text-danger pointer" @click="removeItemForm = true; this.bookToDelete = book"></i>
                   </div>
               </div>
             </div>
@@ -189,7 +189,9 @@ export default {
         quantity: this.removeQuantity,
         book: this.bookToDelete
       };
-      if(this.bookToDelete.saleQuantity >= this.saleQuantity){
+      debugger
+      if(this.bookToDelete.saleQuantity >= this.removeQuantity){
+        editedBook.saleQuantity -= this.removeQuantity
         this.$store.dispatch("editSale", editedBook)
       }
       this.$store.dispatch("getSaleQuantity")
