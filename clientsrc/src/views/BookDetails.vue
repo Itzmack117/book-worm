@@ -186,8 +186,8 @@ export default {
 };
 </script>
 <style scoped>
-* {
-  font-family: "Ubuntu", sans-serif;
+*:not(.fas){
+  font-family: 'Ubuntu', sans-serif;
 }
 .text-left {
   text-align: left;

@@ -18,13 +18,13 @@
             <form class="form-inline" @submit.prevent="editSaleQuantity">
               <div class="form-group">
                 <h4 class="mr-5 mt-2">{{this.bookToDelete.title}}</h4>
-                <input min="0" type="number" class="form-control" placeholder="Remove How Many?" v-model.number="removeQuantity">
+                <input min="0" type="number" class="form-control mx-2" placeholder="Remove How Many?" v-model.number="removeQuantity">
               </div>
               <div class="row">
                 <div class="col-12 mx-auto">
                   
-                  <button class="btn btn-outline-primary" type="submit">Remove</button>
-                  <button class="btn btn-outline-primary" type="button" @click="removeItemForm = false">Cancel</button>
+                  <button class="btn btn-primary text-white mx-2" type="submit">Remove</button>
+                  <button class="btn btn-secondary mx-2" type="button" @click="removeItemForm = false">Cancel</button>
                 </div>
               </div>
             </form>
@@ -37,17 +37,17 @@
           <div class="col-4 pt-2 text-left">
             <h5>Book Title</h5>
           </div>
-          <div class="col-1 pt-2 text-center">
-            <h5>Quantiddies</h5>
+          <div class="col-1 pt-2 text-left">
+            <h5>Qty</h5>
           </div>
           <div class="col-2 pt-2 text-center">
-            <h5>How many $</h5>
+            <h5>Cost ($)</h5>
           </div>
           <div class="col-2 pt-2 text-center">
-            <h5>Total tiddy</h5>
+            <h5>Total ($)</h5>
           </div>
-          <div class="col-1 pt-2">
-            <h5 class="text-left">Remove</h5>
+          <div class="col-1 pt-2 pl-0">
+            <h5 class="text-center">Remove</h5>
           </div>
         </div>
 
@@ -57,32 +57,32 @@
               <div class="row border-bottom border-dark bg-light" v-if="book.saleQuantity > 0"> <!--  -->
                 <div class="col-2 border-right border-dark pt-2 text-left">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 v-if="book.ISBN">{{book.ISBN}}</h5>
-                    <h5 v-else>ISBN Not Given</h5>
+                    <h5 class="resultOverflow" v-if="book.ISBN" data-toggle="tooltip" data-placement="top" :title="book.ISBN">{{book.ISBN}}</h5>
+                    <h5 class="resultOverflow" v-else>ISBN Not Given</h5>
                     </router-link>
                   </div>
                   <div class="col-4 border-right border-dark pt-2 text-left">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 v-if="book.title">{{book.title}}</h5>
-                    <h5 v-else>No Title Given</h5>
+                    <h5 class="resultOverflow" v-if="book.title" data-toggle="tooltip" data-placement="top" :title="book.title">{{book.title}}</h5>
+                    <h5 class="resultOverflow" v-else>No Title Given</h5>
                     </router-link>
                   </div>
                   <div class="col-1 border-right border-dark pt-2 text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 v-if="book.saleQuantity">{{book.saleQuantity}}</h5>
-                    <h5 v-else>N/A</h5>
+                    <h5 class="resultOverflow" v-if="book.saleQuantity" data-toggle="tooltip" data-placement="top" :title="book.saleQuantity">{{book.saleQuantity}}</h5>
+                    <h5 class="resultOverflow" v-else>N/A</h5>
                      </router-link>
                   </div>
                   <div class="col-2 border-right border-dark pt-2 text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 v-if="book.price">{{book.price.toFixed(2)}}</h5>
-                    <h5 v-else>No Price Given</h5>
+                    <h5 class="resultOverflow" v-if="book.price" data-toggle="tooltip" data-placement="top" :title="'$ '+book.price.toFixed(2)">{{book.price.toFixed(2)}}</h5>
+                    <h5 class="resultOverflow" v-else>No Price Given</h5>
                      </router-link>
                   </div>
                   <div class="col-2 pt-2 border-right border-dark text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 v-if="book.price">{{(book.price * book.saleQuantity).toFixed(2)}}</h5>
-                    <h5 v-else class="text-center">-------</h5>
+                    <h5 class="resultOverflow" v-if="book.price" data-toggle="tooltip" data-placement="top" :title="'$ '+(book.price * book.saleQuantity).toFixed(2)">{{(book.price * book.saleQuantity).toFixed(2)}}</h5>
+                    <h5 class="resultOverflow text-center" v-else >-------</h5>
                      </router-link>
                   </div>
                   <div class="col-1 pt-2 text-center">
@@ -125,7 +125,7 @@
     </div>
     <button
       type="button"
-      class="mt-3 mb-3 btn btn-primary float-right"
+      class="mt-3 mb-3 btn btn-primary text-white float-right mr-0"
       data-toggle="modal"
       data-target="#confirmModal"
           >CONFIRM SALE
@@ -222,8 +222,8 @@ export default {
 }
 </script>
 <style scoped>
-* {
-  font-family: "Ubuntu", sans-serif;
+*:not(.fas){
+  font-family: 'Ubuntu', sans-serif;
 }
 .invoiceContents {
   max-height: 45vh;
@@ -233,4 +233,10 @@ export default {
 .pointer {
   cursor: pointer;
 }
+  .resultOverflow{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 </style>
