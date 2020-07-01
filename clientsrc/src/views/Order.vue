@@ -56,7 +56,7 @@
           <div class="col-2 pt-2 text-center">
             <h5 class="resultOverflow">Total ($)</h5>
           </div>
-          <div class="col-1 ml-0 pt-2">
+          <div class="col-1 ml-0 pl-0 pt-2">
             <h5 class="ml-0 text-left">Remove</h5>
           </div>
         </div>
