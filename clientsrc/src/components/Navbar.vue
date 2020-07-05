@@ -94,7 +94,7 @@
               </div>
             </router-link>
             <router-link v-else :to="{name: 'bookDetails', params: {bookId: book.id}}">
-              <div class="apiResults row border-bottom border-primary py-1 bg-info text-danger">
+              <div class="apiResults row border-bottom border-primary py-1 bg-info text-warning">
                 <div class="col-3 pt-2 text-left ">
                   <h6 class="resultOverflow" data-toggle="tooltip" data-placement="top" :title="book.ISBN">{{book.ISBN}}</h6>
                 </div>
