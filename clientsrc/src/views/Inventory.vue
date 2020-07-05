@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <div class="row books">
+        <div class="row books bg-info">
           <div class="col-12">
 <div
           class="row border-bottom border-dark bg-info"

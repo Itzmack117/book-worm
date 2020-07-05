@@ -30,7 +30,7 @@
         <span class="navbar-text">
           <button class="btn btn-info otherFont" @click="searchForm = true">Search</button>
           <button class="btn btn-info otherFont" @click="login" v-if="!$auth.isAuthenticated">Login</button>
-          <button class="btn btn-danger otherFont" @click="logout" v-else>logout</button>
+          <button class="btn btn-danger otherFont border border-white" @click="logout" v-else>logout</button>
         </span>
       </div>
     </nav>
