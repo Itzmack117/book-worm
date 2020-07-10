@@ -6,6 +6,7 @@ import BookDetails from '../views/BookDetails.vue'
 import Inventory from "../views/Inventory.vue"
 //@ts-ignore
 import Order from '../views/Order.vue'
+import Home from "../views/Home.vue"
 // @ts-ignore
 import Invoice from '../views/Invoice.vue'
 import { authGuard } from "@bcwdev/auth0-vue"
@@ -17,7 +18,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Inventory
+      name: 'Home',
+      component: Home
     },
     {
       path: '/inventory',
