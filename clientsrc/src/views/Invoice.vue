@@ -11,6 +11,12 @@
       </div>
     </div>
 
+    <div class="row mt-4" v-if="quantity == 0">
+          <div class="col-6 mx-auto">
+            You Can Add Books To Your Invoice From The Inventory Page
+          </div>
+        </div>
+
     <div class="row mt-2">
       <div class="col-12 shadow">
         <div class="row bg-gradient-light py-2" v-if="removeItemForm">
@@ -30,7 +36,8 @@
             </form>
           </div>
         </div>
-        <div class="row border-bottom border-dark bg-gradient-primary text-white">
+        
+        <div class="row border-bottom border-dark bg-gradient-primary text-white" v-if="quantity > 0">
           <div class="col-2 pt-2 text-left">
             <h5>ISBN</h5>
           </div>

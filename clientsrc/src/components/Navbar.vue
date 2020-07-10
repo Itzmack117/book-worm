@@ -13,22 +13,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-          <li class=" nav-item otherFont text-white" :class="{ active: $route.name == 'inventory' }">
+          <li class=" nav-item otherFont text-white" :class="{ active: $route.name == 'inventory' }" v-if="$auth.isAuthenticated">
             <router-link :to="{ name: 'inventory' }" class="text-white nav-link">Inventory</router-link>
           </li>
-          <li class="pl-3 nav-item otherFont text-white" :class="{ active: $route.name == 'order' }">
+          <li class="pl-3 nav-item otherFont text-white" :class="{ active: $route.name == 'order' }" v-if="$auth.isAuthenticated">
             <router-link :to="{ name: 'order' }" class="text-white nav-link">
               My Order
             </router-link>
           </li>
-                    <li class="pl-3 nav-item otherFont text-white" :class="{ active: $route.name == 'invoice' }">
+                    <li class="pl-3 nav-item otherFont text-white" :class="{ active: $route.name == 'invoice' }" v-if="$auth.isAuthenticated">
             <router-link :to="{ name: 'invoice' }" class="text-white nav-link">
               Invoice
             </router-link>
           </li>
         </ul>
         <span class="navbar-text">
-          <button class="btn btn-info otherFont" @click="searchForm = true">Search</button>
+          <button class="btn btn-info otherFont" @click="searchForm = true" v-if="$auth.isAuthenticated">Search</button>
           <button class="btn btn-info otherFont" @click="login" v-if="!$auth.isAuthenticated">Login</button>
           <button class="btn btn-danger otherFont border border-white" @click="logout" v-else>logout</button>
         </span>

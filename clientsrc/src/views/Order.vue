@@ -8,6 +8,11 @@
         </div>
       </div>
     </div>
+    <div class="row mt-4" v-if="quantity == 0">
+          <div class="col-6 mx-auto">
+            Search For Books Or View Their Details Page To Add Them To Your Order
+          </div>
+        </div>
 
     <div class="row mt-2">
       <div class="col-12 shadow">
@@ -39,8 +44,9 @@
             </form>
           </div>
         </div>
+        
 
-        <div class="row border-bottom border-dark bg-gradient-primary text-white">
+        <div class="row border-bottom border-dark bg-gradient-primary text-white" v-if="quantity >0">
           <div class="col-2 pt-2 text-left">
             <h5 class="resultOverflow">ISBN</h5>
           </div>
