@@ -110,6 +110,12 @@
       </div>
     </div>
 
+    <div class="row mt-5">
+      <div class="col-8 mx-auto">
+        <p>{{book.description}}</p>
+      </div>
+    </div>
+
     <div
       class="modal fade"
       id="orderModal"
