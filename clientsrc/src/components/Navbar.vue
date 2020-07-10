@@ -165,6 +165,7 @@
         this.results = [];
         this.$store.dispatch("searchBooks", this.searchApi);
         this.results = this.$store.state.searchResults;
+        this.searchApi = "";
       }
     }
   };
