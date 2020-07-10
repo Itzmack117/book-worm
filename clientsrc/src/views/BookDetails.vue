@@ -9,14 +9,14 @@
         <button
          v-if="book.price > 0" 
           type="button"
-          class="btn btn-primary float-right"
+          class="btn btn-primary float-right shadow text-white"
           data-toggle="modal"
           data-target="#orderModal"
         >Order</button>
       </div>
     </div>
 
-    <div class="row bg-light border-bottom border-primary">
+    <div class="row bg-light border-bottom border-primary shadow">
       <div class="col-3 pt-1 text-left">
         <h5>ISBN</h5>
       </div>
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div class="row bg-info">
+    <div class="row bg-info shadow">
       <div class="col-3 py-2 border-right border-primary text-left">
         <h5 v-if="book.ISBN">{{book.ISBN}}</h5>
       </div>
@@ -110,8 +110,8 @@
       </div>
     </div>
 
-    <div class="row mt-4 card py-4 description-box">
-      <div class="col-12 mx-auto">
+    <div class="row mt-4 card py-4 description-box shadow">
+      <div class="col-12 mx-auto px-5">
         <h4>Description: </h4>
         <hr>
         <p>{{book.description}}</p>
@@ -194,6 +194,7 @@ export default {
 };
 </script>
 <style scoped>
+
 *:not(.fas){
   font-family: 'Ubuntu', sans-serif;
 }

@@ -62,7 +62,7 @@
         <div class="row books bg-info">
           <div class="col-12">
 <div
-          class="row border-bottom border-dark bg-info"
+          class="row border-bottom border-dark bg-light"
           v-for="book in booksInStock"
           :key="book.id"
           :bookProp="book"

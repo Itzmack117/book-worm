@@ -1,5 +1,5 @@
 <template>
-    <div class="home container-fluid pl-0 ml-0">
+    <div class="home container-fluid px-0 mx-0">
         <main>
             <div class="row pt-5">
             </div>

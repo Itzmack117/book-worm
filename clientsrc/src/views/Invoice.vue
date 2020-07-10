@@ -64,32 +64,32 @@
               <div class="row border-bottom border-dark bg-light" v-if="book.saleQuantity > 0"> <!--  -->
                 <div class="col-2 border-right border-dark pt-2 text-left">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 class="resultOverflow" v-if="book.ISBN" data-toggle="tooltip" data-placement="top" :title="book.ISBN">{{book.ISBN}}</h5>
-                    <h5 class="resultOverflow" v-else>ISBN Not Given</h5>
+                    <p class="resultOverflow" v-if="book.ISBN" data-toggle="tooltip" data-placement="top" :title="book.ISBN">{{book.ISBN}}</p>
+                    <p class="resultOverflow" v-else>ISBN Not Given</p>
                     </router-link>
                   </div>
                   <div class="col-4 border-right border-dark pt-2 text-left">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 class="resultOverflow" v-if="book.title" data-toggle="tooltip" data-placement="top" :title="book.title">{{book.title}}</h5>
-                    <h5 class="resultOverflow" v-else>No Title Given</h5>
+                    <p class="resultOverflow" v-if="book.title" data-toggle="tooltip" data-placement="top" :title="book.title">{{book.title}}</p>
+                    <p class="resultOverflow" v-else>No Title Given</p>
                     </router-link>
                   </div>
                   <div class="col-1 border-right border-dark pt-2 text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 class="resultOverflow" v-if="book.saleQuantity" data-toggle="tooltip" data-placement="top" :title="book.saleQuantity">{{book.saleQuantity}}</h5>
-                    <h5 class="resultOverflow" v-else>N/A</h5>
+                    <p class="resultOverflow" v-if="book.saleQuantity" data-toggle="tooltip" data-placement="top" :title="book.saleQuantity">{{book.saleQuantity}}</p>
+                    <p class="resultOverflow" v-else>N/A</p>
                      </router-link>
                   </div>
                   <div class="col-2 border-right border-dark pt-2 text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 class="resultOverflow" v-if="book.price" data-toggle="tooltip" data-placement="top" :title="'$ '+book.price.toFixed(2)">{{book.price.toFixed(2)}}</h5>
-                    <h5 class="resultOverflow" v-else>No Price Given</h5>
+                    <p class="resultOverflow" v-if="book.price" data-toggle="tooltip" data-placement="top" :title="'$ '+book.price.toFixed(2)">{{book.price.toFixed(2)}}</p>
+                    <p class="resultOverflow" v-else>No Price Given</p>
                      </router-link>
                   </div>
                   <div class="col-2 pt-2 border-right border-dark text-right">
                      <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
-                    <h5 class="resultOverflow" v-if="book.price" data-toggle="tooltip" data-placement="top" :title="'$ '+(book.price * book.saleQuantity).toFixed(2)">{{(book.price * book.saleQuantity).toFixed(2)}}</h5>
-                    <h5 class="resultOverflow text-center" v-else >-------</h5>
+                    <p class="resultOverflow" v-if="book.price" data-toggle="tooltip" data-placement="top" :title="'$ '+(book.price * book.saleQuantity).toFixed(2)">{{(book.price * book.saleQuantity).toFixed(2)}}</p>
+                    <p class="resultOverflow text-center" v-else >-------</p>
                      </router-link>
                   </div>
                   <div class="col-1 pt-2 text-center">
