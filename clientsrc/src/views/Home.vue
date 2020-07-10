@@ -6,7 +6,7 @@
             <div class="row mt-4">
                 <div class="col-3  offset-8 pt-3 "> <!-- card bg-gradient-primary welcome-card-->
                     <p class="welcome-text text-white mb-0"><b>Welcome To Bookworm!</b></p>
-                    <p class="text-white mb-2 mt-0 sub-title pointer" @click="login">Please Login To Continue</p>
+                    <p class="text-white mb-2 mt-0 sub-title pointer" @click="login" v-if="!$auth.isAuthenticated">Please Login To Continue</p>
                 </div>
             </div>
         </main>

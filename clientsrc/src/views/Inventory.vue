@@ -49,12 +49,12 @@
             <h5>Book Title</h5>
           </div>
           <div class="col-2 pt-2 text-center">
-            <h5>Qty</h5>
+            <h5>Quantity</h5>
           </div>
           <div class="col-2 pt-2 text-center">
             <h5>Cost ($)</h5>
           </div>
-          <div class="col-1 pt-2 text-center">
+          <div class="col-1 pt-2 text-left">
             <h5>Sell</h5>
           </div>
         </div>

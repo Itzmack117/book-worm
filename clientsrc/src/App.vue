@@ -32,12 +32,14 @@ export default {
 @import "./assets/_overrides.scss";
 
 #app {
+  max-height: 100vh;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 #nav {

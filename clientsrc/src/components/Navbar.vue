@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-gradient-primary" style="opacity: 1">
       <i class="pb-2 fas fa-book fa-2x text-white mr-3"></i>
-      <router-link class="navbar-brand text-white" :to="{ name: 'Home' }">
+      <router-link class="navbar-brand text-white" :to="{ name: 'home' }">
         <span class="thefont">
           <h1 class="mt-2">Bookworm</h1>
         </span>
