@@ -114,7 +114,7 @@
       </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-4"  v-if="quantity > 0">
       <div class="offset-6 col-6">
         <div class="row border-bottom border-dark bg-gradient-primary text-white">
           <div class="col-6 mt-2 text-center">
@@ -126,7 +126,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row"  v-if="quantity > 0">
       <div class="offset-3 col-9">
         <div class="row">
           <div class="col-4 pt-2 text-right">
@@ -146,6 +146,7 @@
 
     <button
       type="button"
+       v-if="quantity > 0"
       class="mt-3 mb-3 btn btn-primary float-right"
       data-toggle="modal"
       data-target="#confirmModal"
