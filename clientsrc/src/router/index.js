@@ -24,22 +24,26 @@ export default new Router({
     {
       path: '/inventory',
       name: 'inventory',
-      component: Inventory
+      component: Inventory,
+      beforeEnter: authGuard
     },
     {
       path: '/bookDetails/:bookId',
       name: 'bookDetails',
-      component: BookDetails
+      component: BookDetails,
+      beforeEnter: authGuard
     },
     {
       path: '/order',
       name: 'order',
       component: Order,
+      beforeEnter: authGuard
     },
     {
       path: '/invoice',
       name: 'invoice',
       component: Invoice,
+      beforeEnter: authGuard
     },
 
     {
