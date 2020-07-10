@@ -159,7 +159,6 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" @click="confirmOrder">Submit Order</button>
-            <!-- Make the submimt button close the modal too -->
           </div>
         </div>
       </div>
