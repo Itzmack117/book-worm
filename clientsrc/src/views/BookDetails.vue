@@ -110,8 +110,10 @@
       </div>
     </div>
 
-    <div class="row mt-5">
-      <div class="col-8 mx-auto">
+    <div class="row mt-4 card py-4 description-box">
+      <div class="col-12 mx-auto">
+        <h4>Description: </h4>
+        <hr>
         <p>{{book.description}}</p>
       </div>
     </div>
@@ -194,6 +196,11 @@ export default {
 <style scoped>
 *:not(.fas){
   font-family: 'Ubuntu', sans-serif;
+}
+.description-box{
+  max-height: 12em;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .text-left {
   text-align: left;
