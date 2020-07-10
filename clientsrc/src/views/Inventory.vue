@@ -2,7 +2,7 @@
   <div class="inventory container">
     <div class="row mt-5 mb-0">
       <div class="col-6 mx-auto bg-secondary text-primary">
-        <h3 class="pt-1">Books On Hand</h3>
+        <h3 class="pt-1">Inventory</h3>
         <div class="row">
           <div class="col-8 mx-auto border-bottom border-dark"></div>
         </div>
