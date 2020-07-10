@@ -63,11 +63,11 @@
           <div class="col-12">
 <div
           class="row border-bottom border-dark bg-info"
-          v-for="book in books"
+          v-for="book in booksInStock"
           :key="book.id"
           :bookProp="book"
         >
-          <div class="col-12">
+          <div class="col-12" >
             <div class="row" v-if="book.quantity > 0">
               <div class="col-3 pt-2 text-left border-right border-dark">
                 <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
@@ -122,8 +122,12 @@ export default {
   computed: {
     books() {
       return this.$store.state.books;
+    },
+    booksInStock(){
+      return this.books.filter(b => b.quantity > 0);
     }
   },
+
   methods: {
     setToSale(book) {
       this.bookToSell = this.books.find(b => b.id == book.id);

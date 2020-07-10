@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-gradient-primary" style="opacity: 1">
       <i class="pb-2 fas fa-book fa-2x text-white mr-3"></i>
       <router-link class="navbar-brand text-white" :to="{ name: 'inventory' }">
         <span class="thefont">
