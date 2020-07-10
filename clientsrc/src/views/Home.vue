@@ -23,7 +23,9 @@ export default {
 
 <style>
 main{
-    min-height: 93vh;
+    min-height: 92vh;
+    
+    overflow-x: hidden;
     background-image: linear-gradient(
         to bottom,
         rgba(212, 0, 255, 0.15),
@@ -31,8 +33,9 @@ main{
     );
 }
 .home{
-    height: 93vh;
+    /* height: 93vh; */
     width: 100vw;
+    overflow-y: hidden;
     background-image: url("../assets/book.jpeg");
     background-size: cover;
     background-position: center;

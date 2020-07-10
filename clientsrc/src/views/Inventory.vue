@@ -42,13 +42,13 @@
         </div>
 
         <div class="row border-bottom border-dark bg-gradient-primary text-white">
-          <div class="col-3 pt-2 text-left">
+          <div class="col-2 pt-2 text-left">
             <h5>ISBN</h5>
           </div>
           <div class="col-5 pt-2 text-left">
             <h5>Book Title</h5>
           </div>
-          <div class="col-1 pt-2 text-center">
+          <div class="col-2 pt-2 text-center">
             <h5>Qty</h5>
           </div>
           <div class="col-2 pt-2 text-center">
@@ -69,7 +69,7 @@
         >
           <div class="col-12" >
             <div class="row" v-if="book.quantity > 0">
-              <div class="col-3 pt-2 text-left border-right border-dark">
+              <div class="col-2 pt-2 text-left border-right border-dark">
                 <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
                   <p class="resultOverflow"  data-toggle="tooltip" data-placement="top" :title="book.ISBN">{{book.ISBN}}</p>
                 </router-link>
@@ -79,7 +79,7 @@
                   <p class="resultOverflow" data-toggle="tooltip" data-placement="top" :title="book.title">{{book.title}}</p>
                 </router-link>
               </div>
-              <div class="col-1 pt-2 text-right border-right border-dark">
+              <div class="col-2 pt-2 text-right border-right border-dark">
                 <router-link :to="{name: 'bookDetails', params: {bookId: book.id}}">
                   <p class="resultOverflow" data-toggle="tooltip" data-placement="top" :title="book.quantity">{{book.quantity}}</p>
                 </router-link>
